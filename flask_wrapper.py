@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__, template_folder="./templates")
 
-UPLOAD_FOLDER = "~/Documents/"
+UPLOAD_FOLDER = "~/Downloads/"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/")
