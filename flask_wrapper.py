@@ -19,7 +19,7 @@ def get_file():
     try:
         if request.method == "POST":
             if request.files["uploaded_file"] != None and request.values["user"] != None:
-                user = request.values["user"]
+                user = request.form["user"]
                 f = request.files["uploaded_file"]
                 f.save(os.path.join(UPLOAD_FOLDER.format(user), secure_filename(f.filename)))
                 return "ALL OKEY"
