@@ -6,11 +6,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__, template_folder="./templates")
 
-<<<<<<< Updated upstream
-UPLOAD_FOLDER = "~/Downloads/"
-=======
 UPLOAD_FOLDER = "/home/bridgestone/Documents/"
->>>>>>> Stashed changes
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/")
