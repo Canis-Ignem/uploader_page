@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 
 
 
-app = Flask(__name__, template_folder="./templates")
+app = Flask(__name__, template_folder="./")
 
 #UPLOAD_FOLDER = "/home/{}/Downloads"
 #app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -13,15 +13,16 @@ app = Flask(__name__, template_folder="./templates")
 def index():
     return render_template("index.html")
 
-@app.route("/", methods = ['GET', 'POST'])
+@app.route("/flask", methods = ['POST', 'GET'])
 def get_file():
+    #return render_template("upload.html")
     try:
         if request.method == "POST":
             if request.files["uploaded_file"] != None:
-                user = request.form["user"]
+                #user = request.form["user"]
                 f = request.files["uploaded_file"]
-                f.save(secure_filename(f.filename))
-                return "ALL OKEY"
+                f.save(f.filename)
+                return render_template("index.html")
     except:
         print("Something went wrong")
 
