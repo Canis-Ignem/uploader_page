@@ -6,8 +6,8 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__, template_folder="./templates")
 
-#UPLOAD_FOLDER = '/home/bridgestone/Downloads'
-#app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+UPLOAD_FOLDER = "~/Documents/"
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/")
 def index():
