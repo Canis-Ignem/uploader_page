@@ -6,8 +6,8 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__, template_folder="./templates")
 
-UPLOAD_FOLDER = '/home/bridgestone/Downloads'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+#UPLOAD_FOLDER = '/home/bridgestone/Downloads'
+#app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/")
 def index():
@@ -20,6 +20,7 @@ def get_file():
             if request.files["uploaded_file"] != None:
                 f = request.files["uploaded_file"]
                 f.save(secure_filename(f.filename))
+                return "ALL OKEY"
     except:
         print("Something went wrong")
 
