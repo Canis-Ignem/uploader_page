@@ -19,7 +19,7 @@ def get_file():
         if request.method == "POST":
             if request.files["uploaded_file"] != None:
                 f = request.files["uploaded_file"]
-                f.save(secure_filename(f.filename))
+                f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
                 return "ALL OKEY"
     except:
         print("Something went wrong")
