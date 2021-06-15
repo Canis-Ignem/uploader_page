@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__, template_folder="./templates")
 
-UPLOAD_FOLDER = "/home/{}/Downloads"
+UPLOAD_FOLDER = "/home/{}/"
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -21,12 +21,10 @@ def get_file():
             if request.files["uploaded_file"] != None and request.values["user"] != None:
                 user = request.form["user"]
                 f = request.files["uploaded_file"]
-                f.save(os.path.join(UPLOAD_FOLDER.format(user), secure_filename(f.filename)))
+                f.save(os.path.join("/home/test/" , secure_filename(f.filename)))
                 return "ALL OKEY"
     except:
         print("Something went wrong")
 
 if __name__ == "__main__":
-    app.run(host="localhost", port= 8080)
-
-
+	app.run(host="192.168.1.33", port= 8080)
