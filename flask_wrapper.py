@@ -17,10 +17,10 @@ def index():
 def get_file():
     try:
         if request.method == "POST":
-            if request.files["uploaded_file"] != None and request.values["user"] != None:
+            if request.files["uploaded_file"] != None:
                 user = request.form["user"]
                 f = request.files["uploaded_file"]
-                f.save(os.path.join(secure_filename(f.filename)))
+                f.save(secure_filename(f.filename))
                 return "ALL OKEY"
     except:
         print("Something went wrong")
