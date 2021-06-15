@@ -27,6 +27,6 @@ def get_file():
         print("Something went wrong")
 
 if __name__ == "__main__":
-    app.run(host="192.168.1.33", port= 8080)
+    app.run(host="localhost", port= 8080)
 
 
