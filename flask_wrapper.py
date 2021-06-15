@@ -28,6 +28,6 @@ def get_file():
         print("Something went wrong")
 
 if __name__ == "__main__":
-    app.run(host="up", port= 5000)
+    app.run(host="localhost/up", port= 5000)
 
 
