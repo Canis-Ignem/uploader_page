@@ -9,7 +9,8 @@ app = Flask(__name__, template_folder="./templates")
 #UPLOAD_FOLDER = "/home/{}/Downloads"
 #app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-app.config['SERVER_NAME'] = 'up:5000'
+app.config['SERVER_NAME'] = 'localhost:5000'
+
 
 @app.route("/")
 def index():
@@ -28,6 +29,6 @@ def get_file():
         print("Something went wrong")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port= 5000)
+    app.run()
 
 
