@@ -10,7 +10,7 @@ conn = engine.connect()
 
 def get_sum(user):
     
-    res = conn.cursor().execute("SELECT md5 from users where user = '{}'".format(user))
+    res = conn.execute("SELECT md5 from users where user = '{}'".format(user))
     return res.fetchone()[0]
 
 def add_user(user, pas):
