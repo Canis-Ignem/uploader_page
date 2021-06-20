@@ -22,4 +22,4 @@ def add_user(user, pas):
     except:
         return False
     
-print(get_sum("test"))
+print(add_user("test", "a"))
