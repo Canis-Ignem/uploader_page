@@ -46,7 +46,7 @@ def validate():
     
 
 if __name__ == "__main__":
-    app.run("192.168.1.33")
-    #app.run()
+    #app.run("192.168.1.33")
+    app.run()
 
 

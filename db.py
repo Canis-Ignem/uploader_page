@@ -12,10 +12,10 @@ def get_sum(user):
     conn.commit()
     return res.fetchone()[0]
 
-def add_user(user, pass):
+def add_user(user, pas):
     try:
         
-        md5_sum = md5(pass)
+        md5_sum = md5(pas)
         conn.cursor().execute("INSERT INTO users VALUES('{}','{}')".format(user, md5_sum))
         conn.commit()
         return True
