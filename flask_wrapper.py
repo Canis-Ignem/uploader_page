@@ -11,7 +11,7 @@ app = Flask(__name__, template_folder="./")
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("login.html")
 
 @app.route("/flask", methods = ['POST', 'GET'])
 def get_file():
@@ -25,6 +25,20 @@ def get_file():
                 return render_template("index.html")
     except:
         print("Something went wrong")
+        
+@app.route("/log", methods = ['POST', 'GET'])
+def validate():
+    
+    try:
+        
+        if request.method == "POST":
+            if request.form["uname"]:
+                print(request.form["uname"])
+            if request.form["psw"]:
+                print(request.form["psw"])
+    except:
+        print("Something went wrong")
+    
 
 if __name__ == "__main__":
     app.run("192.168.1.33")
