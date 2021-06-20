@@ -11,7 +11,7 @@ app = Flask(__name__, template_folder="./")
 
 @app.route("/")
 def index():
-    return render_template("login.html")
+    return render_template("index.html")
 
 @app.route("/flask", methods = ['POST', 'GET'])
 def get_file():
