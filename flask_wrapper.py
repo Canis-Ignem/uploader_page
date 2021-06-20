@@ -36,7 +36,7 @@ def validate():
             user = request.form["uname"]
             with open("/home/{}/sum".format(user)) as f:
                 check_summ = f.readline()
-                return(check_summ)
+                return check_summ
             print(request.form["psw"])
             return render_template("index.html")
     except:
