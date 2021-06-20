@@ -32,7 +32,7 @@ def validate():
     try:
         
         if request.method == "POST":
-            
+            return "test2"
             user = request.form["uname"]
             if db.get_sum(user) == md5(request.form["psw"]):
                 return render_template("index.html")
