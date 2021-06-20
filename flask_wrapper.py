@@ -34,7 +34,6 @@ def validate():
         if request.method == "POST":
             
             user = request.form["uname"]
-            request.form["psw"]
             if db.get_sum(user) == md5(request.form["psw"]):
                 return render_template("index.html")
             else:
@@ -46,7 +45,7 @@ def validate():
     
 
 if __name__ == "__main__":
-    #app.run("192.168.1.33")
-    app.run()
+    app.run("192.168.1.33")
+    #app.run()
 
 
