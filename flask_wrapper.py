@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import os
 from werkzeug.utils import secure_filename
-
+from md5 import md5
 
 
 app = Flask(__name__, template_folder="./")
@@ -32,10 +32,13 @@ def validate():
     try:
         
         if request.method == "POST":
-            if request.form["uname"]:
-                return request.form["uname"]
-            if request.form["psw"]:
-                print(request.form["psw"])
+            
+            user = request.form["uname"]
+            with open("/home/{}/sum".format(user)) as f:
+                check_summ = f.readline()
+                return(check_summ)
+            print(request.form["psw"])
+            return render_template("index.html")
     except:
         return "Something went wrong"
     
