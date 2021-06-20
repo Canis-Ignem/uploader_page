@@ -3,7 +3,7 @@ import os
 from werkzeug.utils import secure_filename
 from md5 import md5
 import db
-
+import sqlite3
 app = Flask(__name__, template_folder="./templates")
 
 #UPLOAD_FOLDER = "/home/{}/Downloads"
@@ -33,7 +33,13 @@ def validate():
         
         if request.method == "POST":
             user = request.form["uname"]
-            return db.get_sum(user)
+            conn = sqlite3.connect("./user.db")
+            print("a")
+            res = conn.cursor().execute("SELECT md5 from users where user = '{}'".format(user))
+            print(res[0])
+            a = db.get_sum(user)
+            print(a)
+            return a
             if db.get_sum(user) == md5(request.form["psw"]):
                 
                 return render_template("index.html")
@@ -47,7 +53,7 @@ def validate():
     
 
 if __name__ == "__main__":
-    app.run("192.168.1.33")
-    #app.run()
+    #app.run("192.168.1.33")
+    app.run()
 
 
