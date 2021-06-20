@@ -18,7 +18,6 @@ def add_user(user, pas):
         
         md5_sum = md5(pas)
         conn.execute("INSERT INTO users VALUES('{}','{}')".format(user, md5_sum))
-        conn.commit()
         return True
     except:
         return False
