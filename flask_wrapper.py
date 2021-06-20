@@ -33,10 +33,12 @@ def validate():
         
         if request.method == "POST":
             user = request.form["uname"]
-            return user
+            return request.form["psw"]
             if db.get_sum(user) == md5(request.form["psw"]):
+                return db.get_sum(user)
                 return render_template("index.html")
             else:
+                db.get_sum(user)
                 return "Pass missmatch"
             
             
