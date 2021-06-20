@@ -2,9 +2,9 @@ from flask import Flask, render_template, request
 import os
 from werkzeug.utils import secure_filename
 from md5 import md5
+import db
 
-
-app = Flask(__name__, template_folder="./")
+app = Flask(__name__, template_folder="./templates")
 
 #UPLOAD_FOLDER = "/home/{}/Downloads"
 #app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -34,11 +34,13 @@ def validate():
         if request.method == "POST":
             
             user = request.form["uname"]
-            with open("/home/{}/sum".format(user)) as f:
-                check_summ = f.readline()
-                return check_summ
-            print(request.form["psw"])
-            return render_template("index.html")
+            request.form["psw"]
+            if db.get_sum(user) == md5(request.form["psw"]):
+                return render_template("index.html")
+            else:
+                return "Pass missmatch"
+            
+            
     except:
         return "Something went wrong"
     
