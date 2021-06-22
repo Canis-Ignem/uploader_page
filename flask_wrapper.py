@@ -32,6 +32,7 @@ def validate():
     try:
         
         if request.method == "POST":
+            return "a"
             user = request.form["uname"]
             conn = sqlite3.connect("./user.db")
             res = conn.cursor().execute("SELECT md5 from users where user = '{}'".format(user))
