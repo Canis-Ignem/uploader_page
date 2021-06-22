@@ -22,4 +22,3 @@ def add_user(user, pas):
     except:
         return False
     
-print(add_user("test", "a"))

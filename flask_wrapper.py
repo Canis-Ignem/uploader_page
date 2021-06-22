@@ -34,7 +34,6 @@ def validate():
         if request.method == "POST":
             user = request.form["uname"]
             conn = sqlite3.connect("./user.db")
-            print("a")
             res = conn.cursor().execute("SELECT md5 from users where user = '{}'".format(user))
             print(res[0])
             a = db.get_sum(user)
