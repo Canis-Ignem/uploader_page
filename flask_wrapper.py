@@ -22,10 +22,12 @@ def get_file():
     #return render_template("upload.html")
     try:
         if request.method == "POST":
+            return "a"
             if request.files["uploaded_file"] != None:
                 #user = request.form["user"]
                 f = request.files["uploaded_file"]
                 f.save(f.filename)
+                
                 return render_template("index.html")
     except:
         print("Something went wrong")
