@@ -9,6 +9,10 @@ app = Flask(__name__, template_folder="./templates")
 #UPLOAD_FOLDER = "/home/{}/Downloads"
 #app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
+
+LOGGED_USER = ""
+
 @app.route("/")
 def index():
     return render_template("login.html")
@@ -40,6 +44,7 @@ def validate():
 
             if db.get_sum(user) == md5(request.form["psw"]):
                 
+                LOGGED_USER = user
                 return render_template("index.html")
             else:
                 db.get_sum(user)
@@ -60,6 +65,8 @@ def sign_in():
             assert request.form["psw"] == request.form["psw2"]
 
             db.add_user(user,request.form["psw2"])
+            LOGGED_USER = user
+            return render_template("index.html")
             
     except:
         return "Something went wrong"
