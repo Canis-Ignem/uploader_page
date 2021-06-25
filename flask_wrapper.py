@@ -32,14 +32,11 @@ def validate():
     try:
         
         if request.method == "POST":
-            return "a"
             user = request.form["uname"]
-            conn = sqlite3.connect("./user.db")
-            res = conn.cursor().execute("SELECT md5 from users where user = '{}'".format(user))
-            print(res[0])
+            passwd = request.form["psw"]
             a = db.get_sum(user)
-            print(a)
-            return a
+            return(a)
+
             if db.get_sum(user) == md5(request.form["psw"]):
                 
                 return render_template("index.html")
