@@ -24,9 +24,10 @@ def get_file():
         if request.method == "POST":
             
             if request.files["uploaded_file"] != None:
-                return "a"
+                
                 #user = request.form["user"]
                 f = request.files["uploaded_file"]
+                return "a"
                 f.save(f.filename)
                 
                 return render_template("index.html")
