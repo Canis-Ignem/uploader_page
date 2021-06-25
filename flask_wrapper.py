@@ -11,7 +11,7 @@ uploads_dir = os.path.join(app.instance_path, 'uploads')
 passwd = ""
 with open("pass",'r') as p:
     passwd = p.read()
-os.popen("sudo -S %s"%("mkdir /home/keystone/testing"), 'w').write(passwd)
+
 LOGGED_USER = ""
 
 @app.route("/")
@@ -28,7 +28,7 @@ def get_file():
                 
                 user = request.form["user"]
                 f = request.files["uploaded_file"]
-                #return os.path.join("/home/{}/".format(user), secure_filename(f.name))
+                os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
                 f.save( "/home/{}/uploads/".format(user)+secure_filename(f.filename))
                 return "a"
                 return render_template("index.html")
