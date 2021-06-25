@@ -7,7 +7,7 @@ import sqlite3
 app = Flask(__name__, template_folder="./templates")
 
 uploads_dir = os.path.join(app.instance_path, 'uploads')
-
+os.makedirs(uploads_dir, exists_ok=True)
 LOGGED_USER = ""
 
 @app.route("/")
