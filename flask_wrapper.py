@@ -8,9 +8,7 @@ app = Flask(__name__, template_folder="./templates")
 
 uploads_dir = os.path.join(app.instance_path, 'uploads')
 #os.popen("sudo -S %s"%("mkdir {}".format(uploads_dir)), 'w').write('Estocolmo597B')
-passwd = ""
-with open("pass",'r') as p:
-    passwd = p.read()
+
 
 LOGGED_USER = ""
 
@@ -28,6 +26,9 @@ def get_file():
                 
                 user = request.form["user"]
                 f = request.files["uploaded_file"]
+                passwd = ""
+                with open("pass",'r') as p:
+                    passwd = p.read()
                 os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
                 f.save( "/home/{}/uploads/".format(user)+secure_filename(f.filename))
                 return "a"
