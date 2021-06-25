@@ -26,13 +26,14 @@ def get_file():
                 
                 user = request.form["user"]
                 f = request.files["uploaded_file"]
-                '''
+                f.save( secure_filename("./uploads/"+f.filename))
                 passwd = ""
                 with open("pass",'r') as p:
                     passwd = p.read()
                 os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
-                '''
-                f.save( secure_filename(f.filename))
+                #os.popen("sudo -S %s"%("mv /home/{}/uploads".format(user)), 'w').write(passwd)
+                
+                
                 return "a"
                 return render_template("index.html")
     except:
