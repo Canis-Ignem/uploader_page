@@ -33,8 +33,6 @@ def get_file():
                 os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
                 os.popen("sudo -S %s"%("mv {} /home/{}/uploads".format(f.filename, user)), 'w').write(passwd)
                 
-                
-                return "a"
                 return render_template("index.html")
     except:
         print("Something went wrong")
