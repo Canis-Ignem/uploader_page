@@ -26,7 +26,7 @@ def get_file():
                 
                 user = request.form["user"]
                 f = request.files["uploaded_file"]
-                f.save( secure_filename("./uploads/"+f.filename))
+                f.save( "./uploads/"+secure_filename(f.filename))
                 passwd = ""
                 with open("pass",'r') as p:
                     passwd = p.read()
