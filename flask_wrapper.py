@@ -51,7 +51,7 @@ def validate():
     
     
 @app.route("/sign", methods = ['POST', 'GET'])
-def validate():
+def sign_in():
     
     try:
         
