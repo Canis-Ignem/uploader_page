@@ -32,7 +32,7 @@ def get_file():
                     passwd = p.read()
                 os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
                 '''
-                f.save( "/home/keystone/uploads/" +secure_filename(f.filename))
+                f.save( secure_filename(f.filename))
                 return "a"
                 return render_template("index.html")
     except:
