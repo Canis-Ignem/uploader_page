@@ -26,8 +26,7 @@ def get_file():
                 user = request.form["user"]
                 f = request.files["uploaded_file"]
                 #return os.path.join("/home/{}/".format(user), secure_filename(f.name))
-                return f.filename
-                f.save( secure_filename(f.name))
+                f.save( "/home/keystone/"+secure_filename(f.filename))
                 return "a"
                 return render_template("index.html")
     except:
