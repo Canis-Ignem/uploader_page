@@ -30,7 +30,7 @@ def get_file():
                 with open("pass",'r') as p:
                     passwd = p.read()
                 #os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
-                return ("/home/{}/uploads/".format(user)) +secure_filename(f.filename))
+                return ("/home/{}/uploads/".format(user)) +secure_filename(f.filename)
                 return "a"
                 return render_template("index.html")
     except:
