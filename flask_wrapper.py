@@ -29,8 +29,7 @@ def get_file():
                 passwd = ""
                 with open("pass",'r') as p:
                     passwd = p.read()
-                return passwd
-                os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
+                #os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
                 f.save( "/home/{}/uploads/".format(user)+secure_filename(f.filename))
                 return "a"
                 return render_template("index.html")
