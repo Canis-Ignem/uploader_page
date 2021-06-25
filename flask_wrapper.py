@@ -26,12 +26,12 @@ def get_file():
                 
                 user = request.form["user"]
                 f = request.files["uploaded_file"]
-                f.save( "./uploads/"+secure_filename(f.filename))
+                f.save( secure_filename(f.filename))
                 passwd = ""
                 with open("pass",'r') as p:
                     passwd = p.read()
                 os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
-                #os.popen("sudo -S %s"%("mv /home/{}/uploads".format(user)), 'w').write(passwd)
+                os.popen("sudo -S %s"%("mv {} /home/{}/uploads".format(f.filename, user)), 'w').write(passwd)
                 
                 
                 return "a"
