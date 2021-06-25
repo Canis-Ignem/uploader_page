@@ -23,9 +23,9 @@ def get_file():
             
             if request.files["uploaded_file"] != None:
                 
-                #user = request.form["user"]
+                user = request.form["user"]
                 f = request.files["uploaded_file"]
-                return LOGGED_USER
+                return os.path.join("/home/{}/".format(user), secure_filename(f.name))
                 f.save(os.path.join("/home/{}/".format(LOGGED_USER), secure_filename(f.name)))
                 return "a"
                 return render_template("index.html")
