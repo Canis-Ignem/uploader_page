@@ -6,10 +6,7 @@ import db
 import sqlite3
 app = Flask(__name__, template_folder="./templates")
 
-#UPLOAD_FOLDER = "/home/{}/Downloads"
-#app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-
+uploads_dir = os.path.join(app.instance_path, 'uploads')
 
 LOGGED_USER = ""
 
@@ -27,9 +24,8 @@ def get_file():
                 
                 #user = request.form["user"]
                 f = request.files["uploaded_file"]
+                f.save(os.path.join(uploads_dir, secure_filename(f.name)))
                 return "a"
-                f.save(f.filename)
-                
                 return render_template("index.html")
     except:
         print("Something went wrong")
