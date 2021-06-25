@@ -49,6 +49,21 @@ def validate():
     except:
         return "Something went wrong"
     
+    
+@app.route("/sign", methods = ['POST', 'GET'])
+def validate():
+    
+    try:
+        
+        if request.method == "POST":
+            user = request.form["uname"]
+            assert request.form["psw"] == request.form["psw2"]
+
+            db.add_user(user,request.form["psw2"])
+            
+    except:
+        return "Something went wrong"
+    
 
 if __name__ == "__main__":
     app.run("192.168.1.44")

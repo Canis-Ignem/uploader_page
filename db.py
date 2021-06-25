@@ -21,4 +21,3 @@ def add_user(user, pas):
         return True
     except:
         return False
-    
