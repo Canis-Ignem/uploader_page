@@ -50,7 +50,7 @@ def login():
 
             if db.get_sum(user) == md5(request.form["psw"]):
                 
-                session["user"] = user
+                #session["user"] = user
                 return render_template("index.html", name = user)
             else:
                 db.get_sum(user)
