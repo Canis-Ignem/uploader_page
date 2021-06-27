@@ -23,7 +23,7 @@ def get_file():
             
             if request.files["uploaded_file"] != None:
                 
-                user = user_dic["username"].to_lower()
+                user = user_dic["username"].lower()
                 f = request.files["uploaded_file"]
                 f.save( secure_filename(f.filename))
                 passwd = ""
@@ -42,7 +42,7 @@ def validate():
     try:
         
         if request.method == "POST":
-            user = request.form["uname"].to_lower()
+            user = request.form["uname"].lower()
             passwd = md5(request.form["psw"])
         
             if db.get_sum(user) == passwd:
@@ -67,7 +67,7 @@ def sign_in():
     try:
         
         if request.method == "POST":
-            user = request.form["uname"]
+            user = request.form["uname"].lower()
             assert request.form["psw"] == request.form["psw2"]
 
             db.add_user(user,request.form["psw2"])
