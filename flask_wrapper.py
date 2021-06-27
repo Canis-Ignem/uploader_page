@@ -6,6 +6,9 @@ import db
 app = Flask(__name__, template_folder="./templates")
 
 uploads_dir = os.path.join(app.instance_path, 'uploads')
+app.secret_key = "283xzgt451sadf9823hgbn6913qdj12"
+
+
 
 user_dic = {"username": None, "email": None}
 
