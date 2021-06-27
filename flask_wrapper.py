@@ -77,6 +77,12 @@ def sign_in():
     except:
         return "Something went wrong"
     
+    
+@app.route("/logout", methods = ['POST', 'GET'])
+def logout():
+    
+    return "AAAAAAAAA"
+    
 
 if __name__ == "__main__":
     app.run("192.168.1.44")
