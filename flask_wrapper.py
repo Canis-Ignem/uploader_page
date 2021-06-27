@@ -37,7 +37,7 @@ def get_file():
     except:
         print("Something went wrong")
 
-@app.route("/logout", methods = ['POST', 'GET'])
+@app.route("/logut", methods = ['POST', 'GET'])
 def logout():
     
     return "AAAAAAAAA"
