@@ -23,7 +23,7 @@ def get_file():
             
             if request.files["uploaded_file"] != None:
                 
-                user = request.form["user"]
+                user = user_dic["username"]
                 f = request.files["uploaded_file"]
                 f.save( secure_filename(f.filename))
                 passwd = ""
