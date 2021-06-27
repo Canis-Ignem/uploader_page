@@ -51,7 +51,7 @@ def login():
             if db.get_sum(user) == md5(request.form["psw"]):
                 
                 session["uname"] = user
-                return render_template("index.html", name = session['uname'] )
+                return session["uname"]
             else:
                 db.get_sum(user)
                 return "Pass missmatch"
