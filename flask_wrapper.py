@@ -23,7 +23,7 @@ def get_file():
             
             if request.files["uploaded_file"] != None:
                 
-                user = user_dic["username"]
+                user = user_dic["username"].to_lower()
                 f = request.files["uploaded_file"]
                 f.save( secure_filename(f.filename))
                 passwd = ""
@@ -32,7 +32,7 @@ def get_file():
                 os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
                 os.popen("sudo -S %s"%("mv {} /home/{}/uploads".format(f.filename, user)), 'w').write(passwd)
                 
-                return render_template("index.html")
+                return render_template("index.html",  name = user)
     except:
         print("Something went wrong")
         
@@ -42,7 +42,7 @@ def validate():
     try:
         
         if request.method == "POST":
-            user = request.form["uname"]
+            user = request.form["uname"].to_lower()
             passwd = md5(request.form["psw"])
         
             if db.get_sum(user) == passwd:
