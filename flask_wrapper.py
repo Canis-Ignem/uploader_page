@@ -78,7 +78,7 @@ def sign_in():
         return "Something went wrong"
     
     
-@app.route("logout", methods = ['POST', 'GET'])
+@app.route("/logout", methods = ['POST', 'GET'])
 def logout():
     
     return "AAAAAAAAA"
