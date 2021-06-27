@@ -36,7 +36,12 @@ def get_file():
                 return render_template("index.html",  name = user)
     except:
         print("Something went wrong")
-        
+
+@app.route("/logout", methods = ['POST', 'GET'])
+def logout():
+    
+    return "AAAAAAAAA"
+    
 @app.route("/log", methods = ['POST', 'GET'])
 def login():
     
@@ -78,10 +83,7 @@ def sign_in():
         return "Something went wrong"
     
     
-@app.route("/logout", methods = ['POST', 'GET'])
-def logout():
-    
-    return "AAAAAAAAA"
+
     
 
 if __name__ == "__main__":
