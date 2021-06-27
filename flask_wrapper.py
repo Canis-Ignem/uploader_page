@@ -51,7 +51,7 @@ def validate():
             if db.get_sum(user) == md5(request.form["psw"]):
                 
                 user_dic["username"] = user
-                return render_template("index.html", username = user)
+                return render_template("index.html", name = user)
             else:
                 db.get_sum(user)
                 return "Pass missmatch"
