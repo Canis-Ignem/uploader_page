@@ -23,7 +23,7 @@ def get_file():
             
             if request.files["uploaded_file"] != None:
                 
-                user = session.get("user").lower()
+                user = session["user"].lower()
                 f = request.files["uploaded_file"]
                 f.save( secure_filename(f.filename))
                 passwd = ""
@@ -50,7 +50,6 @@ def login():
 
             if db.get_sum(user) == md5(request.form["psw"]):
                 
-                user_dic["username"] = user
                 session["user"] = user
                 return render_template("index.html", name = user)
             else:
@@ -72,7 +71,6 @@ def sign_in():
             assert request.form["psw"] == request.form["psw2"]
 
             db.add_user(user,request.form["psw2"])
-            LOGGED_USER = user
             return render_template("index.html", name = user)
             
     except:
