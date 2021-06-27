@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 import os
 from werkzeug.utils import secure_filename
 from md5 import md5
@@ -23,7 +23,7 @@ def get_file():
             
             if request.files["uploaded_file"] != None:
                 
-                user = user_dic["username"].lower()
+                user = session["user"].lower()
                 f = request.files["uploaded_file"]
                 f.save( secure_filename(f.filename))
                 passwd = ""
@@ -37,7 +37,7 @@ def get_file():
         print("Something went wrong")
         
 @app.route("/log", methods = ['POST', 'GET'])
-def validate():
+def login():
     
     try:
         
@@ -51,6 +51,7 @@ def validate():
             if db.get_sum(user) == md5(request.form["psw"]):
                 
                 user_dic["username"] = user
+                session["user"] = user
                 return render_template("index.html", name = user)
             else:
                 db.get_sum(user)
