@@ -7,10 +7,9 @@ import sqlite3
 app = Flask(__name__, template_folder="./templates")
 
 uploads_dir = os.path.join(app.instance_path, 'uploads')
-#os.popen("sudo -S %s"%("mkdir {}".format(uploads_dir)), 'w').write('Estocolmo597B')
 
 
-LOGGED_USER = ""
+user_dic = {"username": None, "email": None}
 
 @app.route("/")
 def index():
@@ -51,8 +50,8 @@ def validate():
 
             if db.get_sum(user) == md5(request.form["psw"]):
                 
-                LOGGED_USER = user
-                return render_template("index.html")
+                user_dic["username"] = user
+                return user_dic["username"]
             else:
                 db.get_sum(user)
                 return "Pass missmatch"
