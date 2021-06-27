@@ -9,11 +9,11 @@
     <h1> Welcome {{ name }}</h1>
     <body style="background-color: rgb(127, 200, 0);">
         
-        <h1>2 Upload your files here </h1>
+        <h2>Upload your files here </h2>
         <br>
         <form method="POST" action="/flask" enctype="multipart/form-data">
             
-            Input your user : <input type="text" name = "user" value= {{ name }} /> <br>
+            Input your user : <input type="text" name = "user" value= {{ name }} readonly /> <br>
             <br><br>
             Select a file: <input type="file" name = "uploaded_file" /> <br>
             <br><br>
