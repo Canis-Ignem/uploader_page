@@ -3,11 +3,9 @@ import os
 from werkzeug.utils import secure_filename
 from md5 import md5
 import db
-import sqlite3
 app = Flask(__name__, template_folder="./templates")
 
 uploads_dir = os.path.join(app.instance_path, 'uploads')
-session['username'] = "test"
 
 user_dic = {"username": None, "email": None}
 
@@ -43,7 +41,7 @@ def login():
         
         if request.method == "POST":
             user = request.form["uname"].lower()
-            session['username'] = request.form["uname"].lower()
+            session['username'] = "a"
             return user
             passwd = md5(request.form["psw"])
         
