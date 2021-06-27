@@ -43,7 +43,7 @@ def login():
         
         if request.method == "POST":
             user = request.form["uname"].lower()
-            session['username'] = request.form["uname"].lower()
+            #session['username'] = request.form["uname"].lower()
             return user
             passwd = md5(request.form["psw"])
         
