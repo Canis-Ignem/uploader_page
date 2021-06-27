@@ -24,7 +24,7 @@ def get_file():
             
             if request.files["uploaded_file"] != None:
                 
-                user = session["user"].lower()
+                user = session['uname']
                 f = request.files["uploaded_file"]
                 f.save( secure_filename(f.filename))
                 passwd = ""
@@ -44,8 +44,6 @@ def login():
         
         if request.method == "POST":
             user = request.form["uname"].lower()
-            session['username'] = "a"
-            return user
             passwd = md5(request.form["psw"])
         
             if db.get_sum(user) == passwd:
@@ -53,8 +51,8 @@ def login():
 
             if db.get_sum(user) == md5(request.form["psw"]):
                 
-                Session['uname'] = user
-                return "AAAAAAAAAAAAAA"
+                session['uname'] = user
+                return render_template("index.html", name = session['uname'] )
             else:
                 db.get_sum(user)
                 return "Pass missmatch"
