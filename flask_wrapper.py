@@ -23,7 +23,7 @@ def get_file():
             
             if request.files["uploaded_file"] != None:
                 
-                user = session["user"].lower()
+                user = session.get("user").lower()
                 f = request.files["uploaded_file"]
                 f.save( secure_filename(f.filename))
                 passwd = ""
