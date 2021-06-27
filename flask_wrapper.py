@@ -43,6 +43,8 @@ def login():
         
         if request.method == "POST":
             user = request.form["uname"].lower()
+            session['username'] = request.form["uname"].lower()
+            return user
             passwd = md5(request.form["psw"])
         
             if db.get_sum(user) == passwd:
@@ -50,7 +52,7 @@ def login():
 
             if db.get_sum(user) == md5(request.form["psw"]):
                 
-                session['uname'] = user
+                Session['uname'] = user
                 return "AAAAAAAAAAAAAA"
             else:
                 db.get_sum(user)
