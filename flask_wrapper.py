@@ -72,7 +72,7 @@ def sign_in():
 
             db.add_user(user,request.form["psw2"])
             LOGGED_USER = user
-            return render_template("index.html")
+            return render_template("index.html", name = user)
             
     except:
         return "Something went wrong"
