@@ -109,7 +109,7 @@ def launch_jupyter():
     start_notebook = ['jupyter-notebook', '--no-browser']
     get_token = ['jupyter-notebook', 'list']
     os.popen("cd /home/{} \n jupyter-notebook --no-browser ".format(user))
-    output = subprocess.Popen( get_token, stdout=subprocess.PIPE ).communicate()[1].split(":")[2]
+    output = subprocess.Popen( get_token, stdout=subprocess.PIPE ).communicate()[1]
     #response = os.popen("jupyter-notebook list").readlines()
     #out = response[1]
     return output
