@@ -14,24 +14,25 @@
 
     <body>
         <div id="contenedor">
-        <div id="contenedorcentrado">
-        
-        <h1>BridgeStone</h1>
-        <br>
-        <form method="POST" action="/log" >
-        
-            <div class = "log_form">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-                <br><br>
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-                <br><br>
-                <input type="submit" name = "Log in", value="Log in"/>
+            <div id="contenedorcentrado">
+            
+                <h1>BridgeStone</h1>
+                <br>
+                <div id="login">
+                    <form id="loginform" method="POST" action="/log" >
+                    
+                            <label for="uname"><b>Username</b></label>
+                            <input type="text" placeholder="Enter Username" name="uname" required>
+                            <br><br>
+                            <label for="password"><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" required>
+                            <br><br>
+                            <input type="submit" name = "Log in", value="Log in"/>
+                    
+                    </form>
+                </div>
             </div>
-            </div> 
-        </form>
-        <div>
+        </div>
         <br><br>
         -------------------------------------------------------
         <br><br>
