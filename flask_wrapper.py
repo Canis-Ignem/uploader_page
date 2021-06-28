@@ -107,8 +107,8 @@ def launch_jupyter():
         passwd = p.read()
         
     os.popen("cd /home/{} \n jupyter-notebook --no-browser".format(user))
-    response = os.popen("jupyter-notebook list").readlines()
-    out = response[1]
+    #response = os.popen("jupyter-notebook list").readlines()
+    #out = response[1]
     return "out"
 
 if __name__ == "__main__":
