@@ -4,7 +4,7 @@ from flask.wrappers import Response
 from werkzeug.utils import secure_filename
 from md5 import md5
 import db
-import subprocess
+from subprocess import Popen, list2cmdline
 import tempfile
 
 app = Flask(__name__, template_folder="./templates")
@@ -104,7 +104,7 @@ def sign_in():
 @app.route("/jupyter")
 def launch_jupyter():
     user = session['uname']
-    
+
     with open("pass",'r') as p:
         passwd = p.read()
     
@@ -114,12 +114,15 @@ def launch_jupyter():
    
     response = os.popen("jupyter-notebook list").read()
     #out = response[1]
+  
+
+
     return render_template("index.html")
 
 @app.route("/jupyter2")
 def launch_jupyter2():
     response = os.popen("jupyter-notebook list").read()
-    return response
+    return "http://88.1.56.23" + response.split(":")[3]
 
 if __name__ == "__main__":
     app.run("192.168.1.44")
