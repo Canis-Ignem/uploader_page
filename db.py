@@ -13,11 +13,11 @@ def get_sum(user):
     res = conn.execute("SELECT md5 from users where user = '{}'".format(user))
     return res.fetchone()[0]
 
-def add_user(user, pas):
+def add_user(user, pas, email, DoB, country_of_residence, batch, gender ):
     try:
         
         md5_sum = md5(pas)
-        conn.execute("INSERT INTO users VALUES('{}','{}')".format(user, md5_sum))
+        conn.execute("INSERT INTO users VALUES('{}','{}','{}','{}','{}','{}','{}')".format(user, md5_sum, batch, email, gender, country_of_residence, DoB))
         return True
     except:
         return False

@@ -82,13 +82,13 @@ def sign_in():
             assert request.form["psw"] == request.form["psw2"]
             email = request.form["email"].lower()
             DoB = request.form["age"]
-            return DoB
             country = request.form["country"].lower()
-            batch = request.form["batch"].lower()
-            gender = request.form["gender"].lower()
+            batch = request.form["batch"]
+            gender = request.form["gender"]
 
-            db.add_user(user,request.form["psw2"])
+            db.add_user(user,request.form["psw2"], email, DoB, country, batch, gender)
             session['uname'] = user
+            session['batch'] = batch
             return render_template("index.html", name = user)
             
     except:
