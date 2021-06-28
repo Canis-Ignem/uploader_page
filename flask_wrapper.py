@@ -101,7 +101,12 @@ def sign_in():
 @app.route("/jupyter")
 def launch_jupyter():
     user = session['uname']
-    response = os.system("cd /home/{} \n jupyter-notebook --no-browser".format(user))
+    
+    with open("pass",'r') as p:
+        passwd = p.read()
+        
+    os.popen("sudo -S %s"%("cd /home/{}".format(user)), 'w').write(passwd)
+    response = os.popen("jupyter-notebook --no-browser".format(user))
     return response
 
 if __name__ == "__main__":
