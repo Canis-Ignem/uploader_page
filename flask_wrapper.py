@@ -93,7 +93,7 @@ def sign_in():
             if db.add_user(user,request.form["psw2"], email, DoB, country, batch, gender) and db.add_user_grades(user):
                 session['uname'] = user
                 session['batch'] = batch
-                return render_template("index.html", name = user)
+                return render_template("index.html", session['uname'])
             else:
                 return "fail"
             
@@ -101,26 +101,15 @@ def sign_in():
         return "Something went wrong"
     
 
-@app.route("/jupyter")
-def launch_jupyter():
-    user = session['uname']
-
-    with open("pass",'r') as p:
-        passwd = p.read()
+@app.route("/start_jupyter")
+def start_jupyter():
     
-    start_notebook = ['jupyter-notebook', '--no-browser']
-    get_token = ['jupyter-notebook', 'list']
-    os.popen("cd /home/{} \n jupyter-notebook --no-browser ".format(user))
+    os.popen("cd /home/{} \n jupyter-notebook --no-browser ".format(session['uname']))
    
-    response = os.popen("jupyter-notebook list").read()
-    #out = response[1]
-  
+    return render_template("index.html", name = session['uname'])
 
-
-    return render_template("index.html")
-
-@app.route("/jupyter2")
-def launch_jupyter2():
+@app.route("/launch_jupyter22")
+def launch_jupyter():
     response = os.popen("jupyter-notebook list").read()
     return redirect("http://88.1.56.23:" + response.split(":")[3])
 
