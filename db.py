@@ -21,7 +21,7 @@ def add_user(user, pas, email, DoB, country_of_residence, batch, gender ):
         return True
     except:
         return False
-
+'''
 def add_user_grades(user):
     try:
 
@@ -29,3 +29,4 @@ def add_user_grades(user):
         return True
     except:
         return False
+'''
