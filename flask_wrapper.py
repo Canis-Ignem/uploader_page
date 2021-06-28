@@ -109,7 +109,7 @@ def launch_jupyter():
     os.popen("cd /home/{}".format(user))
     os.popen("jupyter-notebook --no-browser")
     response = os.popen("jupyter-notebook list").readlines()
-    out = response[1].split(":")[2]
+    out = response[1]
     return "out"
 
 if __name__ == "__main__":
