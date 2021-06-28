@@ -99,11 +99,7 @@ def sign_in():
             
     except:
         return "Something went wrong"
-
-@app.route("/jupyter2")
-def launch_jupyter2():
-    response = os.popen("jupyter-notebook list").read()
-    return "http://88.1.56.23:" + response.split(":")[3]  
+    
 
 @app.route("/jupyter")
 def launch_jupyter():
@@ -116,14 +112,17 @@ def launch_jupyter():
     get_token = ['jupyter-notebook', 'list']
     os.popen("cd /home/{} \n jupyter-notebook --no-browser ".format(user))
    
-    response = launch_jupyter2()
+    response = os.popen("jupyter-notebook list").read()
     #out = response[1]
   
 
 
-    return response
+    return render_template("index.html")
 
-
+@app.route("/jupyter2")
+def launch_jupyter2():
+    response = os.popen("jupyter-notebook list").read()
+    return redirect("http://88.1.56.23:" + response.split(":")[3])
 
 if __name__ == "__main__":
     app.run("192.168.1.44")
