@@ -116,12 +116,12 @@ def launch_jupyter():
     get_token = ['jupyter-notebook', 'list']
     os.popen("cd /home/{} \n jupyter-notebook --no-browser ".format(user))
    
-    response = os.popen("jupyter-notebook list").read()
+    response = launch_jupyter2()
     #out = response[1]
   
 
 
-    return redirect(url_for("/jupyter2"))
+    return response
 
 
 
