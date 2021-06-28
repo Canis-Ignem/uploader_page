@@ -105,9 +105,9 @@ def launch_jupyter():
     with open("pass",'r') as p:
         passwd = p.read()
         
-    os.popen("cd /home/{}".format(user))
-    response = os.popen("jupyter-notebook --no-browser")
-    return response
+    os.popen("cd /home/{} \n jupyter-notebook --no-browser".format(user))
+    #response = os.popen("jupyter-notebook --no-browser")
+    return "response"
 
 if __name__ == "__main__":
     app.run("192.168.1.44")
