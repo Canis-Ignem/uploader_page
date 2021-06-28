@@ -110,9 +110,9 @@ def launch_jupyter():
     
     start_notebook = ['jupyter-notebook', '--no-browser']
     get_token = ['jupyter-notebook', 'list']
-    os.popen("cd /home/{} \n jupyter-notebook --no-browser ".format(user))
+    #os.popen("cd /home/{} ".format(user))
     with tempfile.TemporaryFile() as tempf:
-        proc = subprocess.Popen(get_token, stdout=tempf)
+        proc = subprocess.Popen(start_notebook, stdout=tempf)
         proc.wait()
         tempf.seek(0)
         output = tempf.readlines()
