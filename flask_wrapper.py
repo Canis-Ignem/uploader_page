@@ -4,7 +4,7 @@ from flask.wrappers import Response
 from werkzeug.utils import secure_filename
 from md5 import md5
 import db
-
+import subprocess
 app = Flask(__name__, template_folder="./templates")
 
 uploads_dir = os.path.join(app.instance_path, 'uploads')
@@ -105,11 +105,13 @@ def launch_jupyter():
     
     with open("pass",'r') as p:
         passwd = p.read()
-        
-    response = os.popen("cd /home/{} \n jupyter-notebook --no-browser".format(user)).readlines()
+    
+    cmd = ['jupyter-notebook', '--no-browser']
+    os.popen("cd /home/{} ".format(user))
+    output = subprocess.Popen( cmd, stdout=subprocess.PIPE ).communicate()[0]
     #response = os.popen("jupyter-notebook list").readlines()
     #out = response[1]
-    return str(response[0])
+    return output
 
 if __name__ == "__main__":
     app.run("192.168.1.44")
