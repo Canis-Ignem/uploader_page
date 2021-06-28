@@ -115,11 +115,11 @@ def launch_jupyter():
         proc = subprocess.Popen(get_token, stdout=tempf)
         proc.wait()
         tempf.seek(0)
-        output = tempf.read()
+        output = tempf.readlines()
     #o = output.split(":")
     #response = os.popen("jupyter-notebook list").readlines()
     #out = response[1]
-    return str(output)
+    return str(output[1])
 
 if __name__ == "__main__":
     app.run("192.168.1.44")
