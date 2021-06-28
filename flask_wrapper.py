@@ -80,6 +80,12 @@ def sign_in():
         if request.method == "POST":
             user = request.form["uname"].lower()
             assert request.form["psw"] == request.form["psw2"]
+            email = request.form["email"].lower()
+            DoB = request.form["age"]
+            return DoB
+            country = request.form["country"].lower()
+            batch = request.form["batch"].lower()
+            gender = request.form["gender"].lower()
 
             db.add_user(user,request.form["psw2"])
             session['uname'] = user
