@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session
 import os
+from flask.wrappers import Response
 from werkzeug.utils import secure_filename
 from md5 import md5
 import db
@@ -105,9 +106,9 @@ def launch_jupyter():
     with open("pass",'r') as p:
         passwd = p.read()
         
-    os.popen("cd /home/{} \n jupyter-notebook --no-browser".format(user))
-    #response = os.popen("jupyter-notebook --no-browser")
-    return "response"
+    response = os.popen("cd /home/{} \n jupyter-notebook --no-browser".format(user))
+    
+    return str(response)
 
 if __name__ == "__main__":
     app.run("192.168.1.44")
