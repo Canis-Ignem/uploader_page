@@ -108,7 +108,7 @@ def start_jupyter():
    
     return render_template("index.html", name = session['uname'])
 
-@app.route("/launch_jupyter22")
+@app.route("/launch_jupyter")
 def launch_jupyter():
     response = os.popen("jupyter-notebook list").read()
     return redirect("http://88.1.56.23:" + response.split(":")[3])
