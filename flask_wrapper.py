@@ -86,10 +86,12 @@ def sign_in():
             batch = request.form["batch"]
             gender = request.form["gender"]
 
-            db.add_user(user,request.form["psw2"], email, DoB, country, batch, gender)
-            session['uname'] = user
-            session['batch'] = batch
-            return render_template("index.html", name = user)
+            if db.add_user(user,request.form["psw2"], email, DoB, country, batch, gender):
+                session['uname'] = user
+                session['batch'] = batch
+                return render_template("index.html", name = user)
+            else:
+                return "fail"
             
     except:
         return "Something went wrong"
