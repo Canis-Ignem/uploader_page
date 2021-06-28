@@ -21,12 +21,11 @@ def add_user(user, pas, email, DoB, country_of_residence, batch, gender ):
         return True
     except:
         return False
-'''
+
 def add_user_grades(user):
     try:
 
-        conn.execute("INSERT INTO grades VALUES('{}')".format(user))
+        conn.execute("INSERT INTO grades VALUES('{}',0,0)".format(user))
         return True
     except:
         return False
-'''

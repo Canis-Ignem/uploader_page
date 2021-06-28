@@ -87,7 +87,7 @@ def sign_in():
             batch = request.form["batch"]
             gender = request.form["gender"]
 
-            if db.add_user(user,request.form["psw2"], email, DoB, country, batch, gender):
+            if db.add_user(user,request.form["psw2"], email, DoB, country, batch, gender) and db.add_user_grades(user):
                 session['uname'] = user
                 session['batch'] = batch
                 return render_template("index.html", name = user)
