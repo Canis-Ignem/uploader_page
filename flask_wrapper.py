@@ -82,6 +82,7 @@ def sign_in():
             assert request.form["psw"] == request.form["psw2"]
 
             db.add_user(user,request.form["psw2"])
+            session['uname'] = user
             return render_template("index.html", name = user)
             
     except:
