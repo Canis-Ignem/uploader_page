@@ -97,9 +97,12 @@ def sign_in():
     except:
         return "Something went wrong"
     
-    
 
-    
+@app.route("/jupyter")
+def launch_jupyter():
+    user = session['uname']
+    response = os.system("cd /home/{} \n jupyter-notebook --no-browser".format(user))
+    return response
 
 if __name__ == "__main__":
     app.run("192.168.1.44")
