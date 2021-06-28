@@ -110,10 +110,15 @@ def launch_jupyter():
     
     start_notebook = ['jupyter-notebook', '--no-browser']
     get_token = ['jupyter-notebook', 'list']
-    os.system("cd /home/{} \n jupyter-notebook --no-browser ".format(user))
+    os.popen("cd /home/{} \n jupyter-notebook --no-browser ".format(user))
    
     response = os.popen("jupyter-notebook list").read()
     #out = response[1]
+    return render_template("index.html")
+
+@app.route("/jupyter2")
+def launch_jupyter2():
+    response = os.popen("jupyter-notebook list").read()
     return response
 
 if __name__ == "__main__":
