@@ -5,6 +5,8 @@ from werkzeug.utils import secure_filename
 from md5 import md5
 import db
 import subprocess
+import tempfile
+
 app = Flask(__name__, template_folder="./templates")
 
 uploads_dir = os.path.join(app.instance_path, 'uploads')
@@ -109,11 +111,15 @@ def launch_jupyter():
     start_notebook = ['jupyter-notebook', '--no-browser']
     get_token = ['jupyter-notebook', 'list']
     os.popen("cd /home/{} \n jupyter-notebook --no-browser ".format(user))
-    output = subprocess.run("jupyter-notebook list", capture_output=True).stdout
+    with tempfile.TemporaryFile() as tempf:
+        proc = subprocess.Popen(get_token, stdout=tempf)
+        proc.wait()
+        tempf.seek(0)
+        output = tempf.read()
     #o = output.split(":")
     #response = os.popen("jupyter-notebook list").readlines()
     #out = response[1]
-    return "str(output)"
+    return str(output)
 
 if __name__ == "__main__":
     app.run("192.168.1.44")
