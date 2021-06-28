@@ -67,9 +67,10 @@ def login():
         return "Something went wrong"
     
 
-@app.route("/register", methods = ['POST', 'GET'])
-def sign_in():
-    render_template("register.html")
+@app.route("/register")
+def register():
+    return render_template("register.html")
+
 
 @app.route("/sign", methods = ['POST', 'GET'])
 def sign_in():
