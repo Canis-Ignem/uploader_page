@@ -106,7 +106,7 @@ def launch_jupyter():
     with open("pass",'r') as p:
         passwd = p.read()
         
-    os.popen("cd /home/{} \n jupyter-notebook --no-browser".format(user)).readlines()
+    os.popen("cd /home/{} \n jupyter-notebook --no-browser".format(user))
     response = os.popen("jupyter-notebook list").readlines()
     return response
 
