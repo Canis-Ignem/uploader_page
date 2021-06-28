@@ -3,6 +3,7 @@ import os
 from werkzeug.utils import secure_filename
 from md5 import md5
 import db
+
 app = Flask(__name__, template_folder="./templates")
 
 uploads_dir = os.path.join(app.instance_path, 'uploads')
