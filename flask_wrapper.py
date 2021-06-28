@@ -66,10 +66,11 @@ def login():
     except:
         return "Something went wrong"
     
-
+'''
 @app.route("/register")
 def sign_in():
     render_template("register.html")
+'''
 
 @app.route("/sign", methods = ['POST', 'GET'])
 def sign_in():
