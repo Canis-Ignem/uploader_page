@@ -110,10 +110,10 @@ def launch_jupyter():
     get_token = ['jupyter-notebook', 'list']
     os.popen("cd /home/{} \n jupyter-notebook --no-browser ".format(user))
     output = subprocess.Popen( get_token, stdout=subprocess.PIPE ).communicate()[0].decode()
-    o = output.split(":")
+    #o = output.split(":")
     #response = os.popen("jupyter-notebook list").readlines()
     #out = response[1]
-    return o[3]
+    return output
 
 if __name__ == "__main__":
     app.run("192.168.1.44")
