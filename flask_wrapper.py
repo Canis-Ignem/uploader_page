@@ -114,7 +114,7 @@ def launch_jupyter():
     with tempfile.TemporaryFile() as tempf:
         proc = subprocess.Popen(get_token, stdout=tempf)
         proc.wait()
-        tempf.seek(1)
+        tempf.seek(2)
         output = tempf.readlines()
     #o = output.split(":")
     #response = os.popen("jupyter-notebook list").readlines()
