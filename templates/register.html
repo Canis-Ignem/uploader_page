@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>BridgeStone</title>
+
+        <link rel="stylesheet" href="/static/css/login.css">
+        
+        <style type="text/css">
+            body {
+                background-image: url('/static/img/mo.jpeg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;  
+                background-size: cover;
+}
+        </style>
+    </head>
+
+    <body>
+        <div id="contenedor">
+            <div id="central">
+            
+                <br>
+                <div id="login">
+                    <div class="titulo">
+                        Register
+                    </div>
+                     <form method="POST" action="/sign" >
+                        <div class = "log_form">
+                            <label for="uname"><b>Username</b></label>
+                            <input type="text" placeholder="Enter Username" name="uname" required>
+                            <br><br>
+                            <label for="psw"><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" required>
+                            <br><br>
+                            <label for="psw"><b>Retype Password</b></label>
+                            <input type="password" placeholder="Retype Password" name="psw2" required>
+                            <br><br>
+                            <input type="submit" name = "Sign in", value="Sign in"/>
+                        </div>
+                    </form>
+                   
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
