@@ -39,8 +39,8 @@ def get_file():
 
 @app.route("/logout", methods = ['POST', 'GET'])
 def logout():
-    
-    return "AAAAAAAAA"
+    session.pop("uname", None)
+    return render_template("login.html")
     
 @app.route("/log", methods = ['POST', 'GET'])
 def login():
