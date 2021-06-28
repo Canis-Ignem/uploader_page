@@ -110,7 +110,7 @@ def launch_jupyter():
     os.popen("jupyter-notebook --no-browser")
     response = os.popen("jupyter-notebook list").readlines()
     out = response[1].split(":")[2]
-    return out
+    return "out"
 
 if __name__ == "__main__":
     app.run("192.168.1.44")
