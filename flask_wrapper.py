@@ -67,7 +67,7 @@ def login():
         return "Something went wrong"
     
 
-@app.route("/register", methods = ['POST', 'GET'])
+@app.route("/register")
 def sign_in():
     render_template("register.html")
 
