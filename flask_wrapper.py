@@ -107,7 +107,9 @@ def sign_in():
 def launch_jupyter():
     response = os.popen("jupyter-notebook list").readlines()
     #redirect("http://88.1.56.23:" + response.split(":")[3])
-    return response[1].split("/home")[1]
+    for res in response[1:]:
+        if res.split("/home/")[1] == session['uname']:
+             return res.split(":")[2]
 
 if __name__ == "__main__":
     app.run("192.168.1.44")
