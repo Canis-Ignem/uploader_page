@@ -108,8 +108,8 @@ def launch_jupyter():
     response = os.popen("jupyter-notebook list").readlines()
     #redirect("http://88.1.56.23:" + response.split(":")[3])
     for i in range(1, len(response)):
-        
-        if str(response[i].split("/home/")[1])[:-1] == str(session['uname']):
+        return str(response[i].split("/home/")[1]).replace(" ","")[:-1] + str(session['uname']).replace(" ","")
+        if str(response[i].split("/home/")[1]).replace(" ","")[:-1] == str(session['uname']).replace(" ",""):
             return redirect("http://88.1.56.23:" + response[i].split(":")[2])
 
 if __name__ == "__main__":
