@@ -61,7 +61,7 @@ def login():
             if db.get_sum(user) == md5(request.form["psw"]):
                 
                 session['uname'] = user
-                os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
+                os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(session['uname']))
                 return render_template("index.html", name = session['uname'] )
                 
             else:
@@ -95,7 +95,7 @@ def sign_in():
             if db.add_user(user,request.form["psw2"], email, DoB, country, batch, gender):
                 session['uname'] = user
                 session['batch'] = batch
-                os.popen("cd /home/{} \n conda activate \n jupyter-notebook -to notebook --no-browser ".format(session['uname']))
+                os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(session['uname']))
                 return render_template("index.html", session['uname'])
             else:
                 return "fail"
