@@ -110,7 +110,6 @@ def launch_jupyter():
     for i in range(1, len(response)):
         
         if str(response[i].split("/home/")[1])[:-1] == str(session['uname']):
-            return "a"
             return response[i].split(":")[2]
 
 if __name__ == "__main__":
