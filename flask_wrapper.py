@@ -95,7 +95,7 @@ def sign_in():
             if db.add_user(user,request.form["psw2"], email, DoB, country, batch, gender):
                 session['uname'] = user
                 session['batch'] = batch
-                os.popen("cd /home/{} \n jupyter-notebook --to notebook --no-browser ".format(session['uname']))
+                os.popen("cd /home/{} \n conda activate \n jupyter-notebook -to notebook --no-browser ".format(session['uname']))
                 return render_template("index.html", session['uname'])
             else:
                 return "fail"
