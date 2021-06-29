@@ -61,7 +61,7 @@ def login():
             if db.get_sum(user) == md5(request.form["psw"]):
                 
                 session['uname'] = user
-                os.popen("cd /home/{} \n jupyter-notebook --no-browser ".format(session['uname']))
+                os.popen(" conda activate\n cd /home/{} \n jupyter-notebook --no-browser ".format(user))
                 return render_template("index.html", name = session['uname'] )
                 
             else:
@@ -103,13 +103,6 @@ def sign_in():
     except:
         return "Something went wrong"
     
-
-@app.route("/start_jupyter")
-def start_jupyter():
-    
-    os.popen("cd /home/{} \n jupyter-notebook --no-browser ".format(session['uname']))
-   
-    return render_template("index.html", name = session['uname'])
 
 @app.route("/launch_jupyter")
 def launch_jupyter():
