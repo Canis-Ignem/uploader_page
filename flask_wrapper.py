@@ -52,14 +52,12 @@ def nbgrader_ex():
                 
                 user = session['uname']
                 batch = db.get_batch(user)
-                return batch
                 f = request.files["uploaded_file"]
                 f.save( secure_filename(f.filename))
                 passwd = ""
                 with open("pass",'r') as p:
                     passwd = p.read()
-                os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
-                os.popen("sudo -S %s"%("mv {} /home/{}/uploads".format(f.filename, user)), 'w').write(passwd)
+                os.popen("sudo -S %s"%("mv {} /home/keystone/Autograding/{}/{}/{}".format(f.filename,batch, user,secure_filename(f.filename)[-6] )), 'w').write(passwd)
                 
                 return render_template("index.html",  name = user)
     except:
