@@ -38,5 +38,5 @@ def get_batch(user):
     
     res = conn.execute("SELECT batch from users where user = '{}'".format(user))
     
-    batch = str(res.fetchone())
-    return batch[0]
+    batch = res.fetchone()
+    return str(batch[0])
