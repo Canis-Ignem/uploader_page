@@ -16,4 +16,6 @@ def create_batch(filename):
             os.popen("mkdir /home/keystone/Autograding/{}/{}".format(f.name, std['email'])).write(passwd)
             
             
+create_batch("AI-May21.csv")
+            
             
