@@ -53,13 +53,14 @@ def nbgrader_ex():
                 user = session['uname']
                 batch = db.get_batch(user)
                 email = db.get_email(user)
+                return email
                 f = request.files["uploaded_file"]
                 f.save( secure_filename(f.filename))
                 passwd = ""
                 with open("pass",'r') as p:
                     passwd = p.read()
-                return "mv {} /home/keystone/Autograding/{}/{}/{}".format(f.filename,batch, user,secure_filename(f.filename)[-6] )
-                os.popen("sudo -S %s"%("mv {} /home/keystone/Autograding/{}/{}/{}".format(f.filename,batch, user,secure_filename(f.filename)[-6] )), 'w').write(passwd)
+                return "mv {} /home/keystone/Autograding/{}/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[-6] )
+                os.popen("sudo -S %s"%("mv {} /home/keystone/Autograding/{}/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[-6] )), 'w').write(passwd)
                 if os.path.isfile("/home/keystone/Autograding/{}/{}/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[-6],secure_filename(f.filename))):
                     return "True"
                 else:
