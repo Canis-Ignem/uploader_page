@@ -61,7 +61,7 @@ def nbgrader_ex():
                     passwd = p.read()
                 #return "mv {} /home/keystone/Autograding/{}/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6] )
                 os.popen("sudo -S %s"%("mv {} /home/keystone/Autograding/{}/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
-                if os.path.exists("/home/keystone/Autograding/{}/{}/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6],f.filename)):
+                if os.path.exists("/home/keystone/Autograding/{}/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],f.filename  )):
                     return "True"
                 else:
                     return "False"
