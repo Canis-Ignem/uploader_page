@@ -11,10 +11,10 @@ def create_batch(filename):
         
         students = pd.read_csv(filename, header=1)
         
-        for std in students['email']:
+        for std in students.values:
             
             print(std)
-            os.popen("mkdir /home/keystone/Autograding/{}/{}".format(f.name, std))
+            os.popen("mkdir /home/keystone/Autograding/{}/{}".format(f.name, std[1]))
             
             
 create_batch("AI-May21.csv")
