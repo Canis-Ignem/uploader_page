@@ -47,3 +47,5 @@ def get_batch(user):
     
     email = res.fetchone()
     return str(email[0])
+
+print(get_batch("keystone"))
