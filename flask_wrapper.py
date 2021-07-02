@@ -45,7 +45,7 @@ def get_file():
         
         
 @app.route("/nbg", methods = ['POST'])
-def get_file():
+def nbgrader_ex():
     try:
         if request.method == "POST":
             
