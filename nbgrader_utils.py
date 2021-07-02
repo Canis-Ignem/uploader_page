@@ -23,3 +23,5 @@ def create_ex(exercise, batch):
         
         os.popen("mkdir /home/keystone/Autograding/{}/{}/{}".format(batch,fldr,exercise))
 
+create_batch("AI-May21.csv")
+create_ex("ml1", "AI-May21")
