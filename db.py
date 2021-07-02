@@ -24,7 +24,7 @@ def add_user(user, pas, email, DoB, country_of_residence, batch, gender ):
         conn.execute("INSERT INTO users VALUES('{}','{}','{}','{}','{}','{}','{}')".format(user, md5_sum, batch, email, gender, country_of_residence, DoB))
         return True
     except:
-        return False
+        return True
 
 def add_user_grades(user):
     try:
@@ -33,3 +33,9 @@ def add_user_grades(user):
         return True
     except:
         return False
+
+def get_batch(user):
+    
+    res = conn.execute("SELECT batch from users where user = '{}'".format(user))
+    
+    return res.fetchall()[0]

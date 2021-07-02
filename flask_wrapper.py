@@ -35,6 +35,31 @@ def get_file():
                 with open("pass",'r') as p:
                     passwd = p.read()
                 os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
+                return "mv {} /home/{}/uploads".format(f.filename, user)
+                os.popen("sudo -S %s"%("mv {} /home/{}/uploads".format(f.filename, user)), 'w').write(passwd)
+                
+                return render_template("index.html",  name = user)
+    except:
+        print("Something went wrong")
+        
+        
+        
+@app.route("/nbg", methods = ['POST'])
+def get_file():
+    try:
+        if request.method == "POST":
+            
+            if request.files["uploaded_file"] != None:
+                
+                user = session['uname']
+                batch = db.get_batch(user)
+                return batch
+                f = request.files["uploaded_file"]
+                f.save( secure_filename(f.filename))
+                passwd = ""
+                with open("pass",'r') as p:
+                    passwd = p.read()
+                os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
                 os.popen("sudo -S %s"%("mv {} /home/{}/uploads".format(f.filename, user)), 'w').write(passwd)
                 
                 return render_template("index.html",  name = user)
