@@ -9,12 +9,12 @@ def create_batch(filename):
         
         os.popen("mkdir /home/keystone/Autograding/{}".format(f.name))
         
-        students = pd.read_csv(filename)
+        students = pd.read_csv(filename, header=1)
         
         for std in students:
             
             print(std)
-            os.popen("mkdir /home/keystone/Autograding/{}/{}".format(f.name, std[1]))
+            os.popen("mkdir /home/keystone/Autograding/{}/{}".format(f.name, std['email']))
             
             
 create_batch("AI-May21.csv")
