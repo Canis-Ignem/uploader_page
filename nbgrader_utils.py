@@ -9,7 +9,7 @@ def create_batch(filename):
         
         os.popen("mkdir /home/keystone/Autograding/{}".format(f.name))
         
-        students = pd.read_csv(filename, header=1)
+        students = pd.read_csv(filename, header=0)
         
         for std in students.values:
             
