@@ -7,7 +7,7 @@ with open("pass",'r') as p:
 def create_batch(filename):
     with open(filename, 'r') as f:
         
-        os.popen("mkdir /home/keystone/Autograding/{}".format(f.name))
+        os.popen("mkdir /home/keystone/Autograding/{}".format(f.name[:-4]))
         
         students = pd.read_csv(filename, header=0)
         
@@ -17,6 +17,10 @@ def create_batch(filename):
             os.popen("mkdir /home/keystone/Autograding/{}/{}".format(f.name, std[1]))
             
             
-create_batch("AI-May21.csv")
-            
-            
+def create_ex(exercise, batch):
+    
+    for fldr in os.listdir("mkdir /home/keystone/Autograding/{}".format(batch)):
+        
+        os.popen("mkdir /home/keystone/Autograding/{}/{}/{}".format(batch,fldr,exercise))
+        
+create_ex("ml1", "AI-May21")      
