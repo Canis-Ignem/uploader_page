@@ -10,7 +10,8 @@ payload = json.dumps({
   "score": 0
 })
 
+header = {'Content-type': "application/json"}
 
-response = requests.post( url, data=payload)
+response = requests.post( url, headers= header, data=payload)
 
 print(response.text)
