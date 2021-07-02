@@ -19,9 +19,7 @@ def create_batch(filename):
             
 def create_ex(exercise, batch):
     
-    for fldr in os.listdir("mkdir /home/keystone/Autograding/{}".format(batch)):
+    for fldr in os.listdir("/home/keystone/Autograding/{}".format(batch)):
         
         os.popen("mkdir /home/keystone/Autograding/{}/{}/{}".format(batch,fldr,exercise))
 
-create_batch("AI-May21.csv")
-create_ex("ml1", "AI-May21")      
