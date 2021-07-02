@@ -41,7 +41,7 @@ def get_batch(user):
     batch = res.fetchone()
     return str(batch[0])
 
-def get_batch(user):
+def get_email(user):
     
     res = conn.execute("SELECT email from users where user = '{}'".format(user))
     

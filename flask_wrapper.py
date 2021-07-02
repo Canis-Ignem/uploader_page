@@ -53,7 +53,7 @@ def nbgrader_ex():
                 user = session['uname']
                 batch = db.get_batch(user)
                 email = db.get_email(user)
-                return email
+                
                 f = request.files["uploaded_file"]
                 f.save( secure_filename(f.filename))
                 passwd = ""
@@ -141,7 +141,7 @@ def launch_jupyter():
             return redirect("http://88.1.56.23:" + response[i].split(":")[2])
 
 if __name__ == "__main__":
-    app.run("192.168.1.44")
+    app.run("192.168.1.44",debug=True)
     #app.run()
 
 
