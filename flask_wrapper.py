@@ -36,7 +36,7 @@ def get_file():
                     passwd = p.read()
                 os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
                 return "mv {} /home/{}/uploads".format(f.filename, user)
-                os.popen("sudo -S %s"%("mv {} /home/{}/uploads".format(f.filename, user)), 'w').write(passwd)
+                os.popen("sudo -S %s"%("mv \"{}\" /home/{}/uploads".format(f.filename, user)), 'w').write(passwd)
                 
                 return render_template("index.html",  name = user)
     except:
