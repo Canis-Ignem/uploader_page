@@ -8,6 +8,7 @@ from subprocess import Popen, list2cmdline
 import re
 import sqlite3 as sql
 import pandas as pd
+from post_data import send_json
 app = Flask(__name__, template_folder="./templates")
 
 uploads_dir = os.path.join(app.instance_path, 'uploads')
@@ -67,8 +68,11 @@ def nbgrader_ex():
                 if os.path.isdir("/home/keystone/Autograding/{}/submitted/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],f.filename  )):
                     
                     os.popen("cd  /home/keystone/Autograding/{} \n nbgrader autograde --student {} --assignment ml1 ".format(email, secure_filename(f.filename)[:-6]))
-                    grade = get_grade(email, secure_filename(f.filename)[:-6], batch)
-                    return render_template("index.html", name = user,  correct = grade)
+                    grade, max_score = get_grade(email, secure_filename(f.filename)[:-6], batch)
+                    
+                    response = send_json(email, secure_filename(f.filename)[:-6], max_score, grade)
+                    
+                    return render_template("index.html", name = user,  correct = response)
                 else:
                     return render_template("index.html", name = user,  correct = "File failed upload")
                 
@@ -125,9 +129,9 @@ def get_grade(email,ex,batch):
         max_score = pd.read_sql_query( q5 , con)
         #print(max_score['max_score'].sum())
        
-        report = " The student:  {} \n Assigment:   {} \n Total marks: {}/{}".format(email,ex,grades['auto_score'].sum(),max_score['max_score'].sum())
+        #report = " The student:  {} \n Assigment:   {} \n Total marks: {}/{}".format(email,ex,grades['auto_score'].sum(),max_score['max_score'].sum())
         #print(report)
-        return report
+        return grades['auto_score'].sum(), max_score['max_score'].sum()
     except:
         #print("No submission for that student")
         return "No submission for this student"
@@ -174,7 +178,7 @@ def launch_jupyter():
             return redirect("http://88.1.56.23:" + response[i].split(":")[2])
 
 if __name__ == "__main__":
-    app.run("192.168.1.44",debug=True)
+    app.run("192.168.1.44")
     #app.run()
 
 
