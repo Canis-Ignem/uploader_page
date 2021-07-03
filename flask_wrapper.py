@@ -82,7 +82,7 @@ def login():
         
         if request.method == "POST":
             user = request.form["uname"].lower()
-
+            return user
             if db.get_sum(user) == md5(request.form["psw"]):
                 
                 session['uname'] = user
