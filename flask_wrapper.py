@@ -67,7 +67,7 @@ def nbgrader_ex():
                 if os.path.isdir("/home/keystone/Autograding/{}/submitted/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],f.filename  )):
                     
                     os.popen("cd  /home/keystone/Autograding/{} \n nbgrader autograde --student {} --assignment ml1 ".format(email, secure_filename(f.filename)[:-6]))
-                    grade = get_grade(email, secure_filename(f.filename)[:-6])
+                    grade = get_grade(email, secure_filename(f.filename)[:-6], batch)
                     return render_template("index.html", name = user,  correct = grade)
                 else:
                     return render_template("index.html", name = user,  correct = "File failed upload")
@@ -102,10 +102,10 @@ def login():
         return "Something went wrong"
 
 @app.route("/get_grade")
-def get_grade(email,ex):
+def get_grade(email,ex,batch):
     
     try:
-        con = sql.connect("/home/jon/gradebook.db")
+        con = sql.connect("/home/keystone/Autograding/{}/gradebook.db".format(batch))
         
         q1 = "SELECT id FROM assignment where name ='{}'".format(ex)
         ass_id = pd.read_sql_query( q1 , con).values[0][0]
