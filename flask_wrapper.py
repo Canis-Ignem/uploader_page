@@ -72,7 +72,7 @@ def nbgrader_ex():
                     
                     response = send_json(email, secure_filename(f.filename)[:-6], max_score, grade)
                     
-                    return render_template("index.html", name = user,  correct = response)
+                    return render_template("index.html", name = user,  correct = "Your score: "+ str(grade/max_score) )
                 else:
                     return render_template("index.html", name = user,  correct = "File failed upload")
                 
@@ -156,9 +156,12 @@ def sign_in():
             batch = request.form["batch"]
             gender = request.form["gender"]
 
-            if db.add_user(user,request.form["psw2"], email, DoB, country, batch, gender):
+            if db.add_user(user,request.form["psw"], email, DoB, country, batch, gender):
                 session['uname'] = user
                 session['email'] = email
+                session['batch'] = batch
+                
+                os.popen("sudo -S %s"%("mkdir /home/keystone/Autograding/{}/submitted/{}/{}".format(batch, email )), 'w')
                 os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
                 return render_template("index.html", session['uname'])
             else:

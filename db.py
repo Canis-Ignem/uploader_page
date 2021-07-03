@@ -9,8 +9,6 @@ with open("pass",'r') as p:
 engine = create_engine("mysql+pymysql://phpmyadmin:{}@localhost:3306/phpmyadmin".format(passwd[:-1]))
 conn = engine.connect()
 
-#conn.execute("CREATE TABLE users(user varchar(32) PRIMARY KEY, md5 text )")
-#conn.cursor().execute("INSERT INTO users VALUES('keystone','6458f3bfa6486a2be61b9fb6f37645c8')")
 
 def get_sum(user):
     
