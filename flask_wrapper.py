@@ -85,6 +85,7 @@ def login():
             if db.get_sum(user) == md5(request.form["psw"]):
                 
                 session['uname'] = user
+                return "cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user)
                 os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
                 return render_template("index.html", name = user, correct = 'f' )
                 
