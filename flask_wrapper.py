@@ -82,10 +82,6 @@ def login():
         
         if request.method == "POST":
             user = request.form["uname"].lower()
-            passwd = md5(request.form["psw"])
-        
-            if db.get_sum(user) == passwd:
-                passwd
 
             if db.get_sum(user) == md5(request.form["psw"]):
                 
@@ -94,7 +90,6 @@ def login():
                 return render_template("index.html", name = user )
                 
             else:
-                db.get_sum(user)
                 return "Pass missmatch"
             
             
