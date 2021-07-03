@@ -20,7 +20,7 @@ user_dic = {"username": None, "email": None}
 def index():
     return render_template("login.html")
 
-@app.route("/flask", methods = ['POST', 'GET'])
+@app.route("/file_up", methods = ['POST', 'GET'])
 def get_file():
     #return render_template("upload.html")
     try:
@@ -37,9 +37,9 @@ def get_file():
                 os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
                 os.popen("sudo -S %s"%("mv \"{}\" /home/{}/uploads".format(secure_filename(f.filename), user)), 'w').write(passwd)
                 
-                return render_template("index.html",  name = user)
+                return render_template("index.html",  name = user, correct2 = "File uploaded correctly" )
     except:
-        print("Something went wrong")
+        return render_template("index.html", name = user,  correct2 = "File failed upload")
         
         
         
@@ -63,9 +63,9 @@ def nbgrader_ex():
                 os.popen("sudo -S %s"%("mv {} /home/keystone/Autograding/{}/submitted/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
                 
                 if os.path.exists("/home/keystone/Autograding/{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],f.filename  )):
-                    return render_template("index.html",  correct = "File uploaded correctly")
+                    return render_template("index.html", name = user,  correct = "File uploaded correctly")
                 else:
-                    return render_template("index.html",  correct = "File failed upload")
+                    return render_template("index.html", name = user,  correct = "File failed upload")
                 
     except:
         print("Something went wrong")
