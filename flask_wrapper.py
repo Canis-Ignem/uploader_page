@@ -108,6 +108,7 @@ def get_grade(email,ex,batch):
         con = sql.connect("/home/keystone/Autograding/{}/gradebook.db".format(batch))
         
         q1 = "SELECT id FROM assignment where name ='{}'".format(ex)
+        return q1
         ass_id = pd.read_sql_query( q1 , con).values[0][0]
         q2 = "Select id from submitted_assignment where student_id = '{}' and assignment_id = '{}'".format(ex,ass_id)
         nb_id = pd.read_sql_query( q2 , con).values[0][0]
