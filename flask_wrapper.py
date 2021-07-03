@@ -112,13 +112,13 @@ def get_grade(email,ex,batch):
         
         q2 = "Select id from submitted_assignment where student_id = '{}' and assignment_id = '{}'".format(email,ass_id)
         nb_id = pd.read_sql_query( q2 , con).values[0][0]
-        return nb_id
+        
         q3 = "Select id from submitted_notebook where assignment_id = '{}'".format(nb_id)
         nb_id = pd.read_sql_query( q3 , con).values[0][0]
 
         q4 = "Select auto_score,cell_id from grade where notebook_id = '{}'".format(nb_id)
         grades = pd.read_sql_query( q4 , con)
-
+        return grades
         cell_list = grades['cell_id'].values.tolist()
         as_str = ','.join("\'"+str(cell_list[i])+ "\'"  for i in range(len(cell_list)))
         q5 = "Select max_score from grade_cells where id IN ({})".format( as_str )
