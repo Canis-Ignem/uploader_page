@@ -158,13 +158,13 @@ def sign_in():
             batch = request.form["batch"]
             gender = request.form["gender"]
 
-            return user
+            
             
             if db.add_user(user,request.form["psw"], email, DoB, country, batch, gender):
                 session['uname'] = user
                 session['email'] = email
                 session['batch'] = batch
-                
+                return batch
                 #os.popen("sudo -S %s"%("mkdir /home/keystone/Autograding/{}/submitted/{}".format(batch, email )), 'w')
                 #os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
                 return render_template("index.html", session['uname'])
