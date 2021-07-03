@@ -14,7 +14,7 @@ def create_batch(filename):
         for std in students.values:
             
             print(std)
-            os.popen("mkdir /home/keystone/Autograding/submitted/{}/sumbitted/{}".format(f.name[:-4], std[1]))
+            os.popen("mkdir /home/keystone/Autograding/{}/sumbitted/{}".format(f.name[:-4], std[1]))
             
             
 def create_ex(exercise, batch):
