@@ -158,6 +158,8 @@ def sign_in():
             batch = request.form["batch"]
             gender = request.form["gender"]
 
+            return user,email,DoB,country,batch,gender
+            
             if db.add_user(user,request.form["psw"], email, DoB, country, batch, gender):
                 session['uname'] = user
                 session['email'] = email
