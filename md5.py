@@ -5,5 +5,3 @@ def md5(text):
         bytes = (text+salt).encode() 
         readable_hash = hs.md5(bytes).hexdigest();
         return readable_hash
-
-print(md5("Estocolmo597B"))
