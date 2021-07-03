@@ -86,7 +86,7 @@ def login():
                 
                 session['uname'] = user
                 os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
-                return render_template("index.html", name = user, correct = 'f' )
+                return render_template("index.html", name = user, correct = True )
                 
             else:
                 return "Pass missmatch"
