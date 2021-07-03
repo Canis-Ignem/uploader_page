@@ -14,6 +14,6 @@ def send_json(email,ex,max_score,score):
 
   header = {'Content-type': "application/json"}
 
-  response = requests.post( url, headers= header, data=payload)
+  response = requests.get( url, headers= header, data=payload)
 
   return response.text
