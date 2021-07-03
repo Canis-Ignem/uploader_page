@@ -165,7 +165,11 @@ def sign_in():
                 session['email'] = email
                 session['batch'] = batch
                 
-                os.popen("sudo -S %s"%("mkdir /home/keystone/Autograding/{}/submitted/{}".format(batch, email )))
+                passwd = ""
+                with open("pass",'r') as p:
+                    passwd = p.read()
+                
+                os.popen("sudo -S %s"%("mkdir /home/keystone/Autograding/{}/submitted/{}".format(batch, email )), 'w').write(passwd)
                 #os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
                 return render_template("index.html", name = session['uname'] )
             else:
