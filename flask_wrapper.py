@@ -63,9 +63,9 @@ def nbgrader_ex():
                 os.popen("sudo -S %s"%("mv {} /home/keystone/Autograding/{}/submitted/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
                 
                 if os.path.exists("/home/keystone/Autograding/{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],f.filename  )):
-                    return render_template("index.html",  correct = True)
+                    return render_template("index.html",  correct = "File uploaded correctly")
                 else:
-                    return render_template("index.html",  correct = False)
+                    return render_template("index.html",  correct = "File failed upload")
                 
     except:
         print("Something went wrong")
@@ -86,7 +86,7 @@ def login():
                 
                 session['uname'] = user
                 os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
-                return render_template("index.html", name = user, correct = True )
+                return render_template("index.html", name = user, correct = '' )
                 
             else:
                 return "Pass missmatch"
