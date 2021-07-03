@@ -14,7 +14,7 @@ app = Flask(__name__, template_folder="./templates")
 uploads_dir = os.path.join(app.instance_path, 'uploads')
 app.secret_key = "283xzgt451sadf9823hgbn6913qdj12"
 
-
+no_user_warning = "You have no user in the machine contact administration"
 
 user_dic = {"username": None, "email": None}
 
@@ -82,6 +82,8 @@ def nbgrader_ex():
 @app.route("/logout", methods = ['POST', 'GET'])
 def logout():
     session.pop("uname", None)
+    session.pop("batch", None)
+    session.pop("email", None)
     return render_template("login.html")
     
 @app.route("/log", methods = ['POST', 'GET'])
@@ -162,10 +164,10 @@ def sign_in():
                 session['batch'] = batch
                 
                 os.popen("sudo -S %s"%("mkdir /home/keystone/Autograding/{}/submitted/{}/{}".format(batch, email )), 'w')
-                os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
+                #os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
                 return render_template("index.html", session['uname'])
             else:
-                return "fail"
+                return "Some of the fields where not correct"
             
     except:
         return "Something went wrong"
@@ -173,13 +175,16 @@ def sign_in():
 
 @app.route("/launch_jupyter")
 def launch_jupyter():
-    response = os.popen("jupyter-notebook list").readlines()
-    #redirect("http://88.1.56.23:" + response.split(":")[3])
-    for i in range(1, len(response)):
+    if os.path.isdir("/home/{}".format(session['uname'])):
         
-        if re.findall('[a-z]+',str(response[i].split("/home/")[1]))[0] == re.findall('[a-z]+',str(session['uname']))[0]:
-            return redirect("http://88.1.56.23:" + response[i].split(":")[2])
-
+        response = os.popen("jupyter-notebook list").readlines()
+        for i in range(1, len(response)):
+            
+            if re.findall('[a-z]+',str(response[i].split("/home/")[1]))[0] == re.findall('[a-z]+',str(session['uname']))[0]:
+                return redirect("http://88.1.56.23:" + response[i].split(":")[2])
+    else:
+        return render_template("index.html", name = session['uname'],  correct = "", warning = no_user_warning )
+        
 if __name__ == "__main__":
     app.run("192.168.1.44")
     #app.run()

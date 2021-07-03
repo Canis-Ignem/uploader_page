@@ -22,7 +22,7 @@ def add_user(user, pas, email, DoB, country_of_residence, batch, gender ):
         conn.execute("INSERT INTO users (user, md5, batch, email, gender, country_of_residence, DoB) VALUES('{}','{}','{}','{}','{}','{}','{}')".format(user, md5_sum, batch, email, gender, country_of_residence, DoB))
         return True
     except:
-        return True
+        return False
 
 def add_user_grades(user):
     try:
@@ -46,4 +46,3 @@ def get_email(user):
     email = res.fetchone()
     return str(email[0])
 
-print(add_user("test", "a", 'a',"1997-08-13", 'a', 'AI-May21', 'Male' ))
