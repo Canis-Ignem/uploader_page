@@ -59,13 +59,14 @@ def nbgrader_ex():
                 passwd = ""
                 with open("pass",'r') as p:
                     passwd = p.read()
-                #return "mv {} /home/keystone/Autograding/{}/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6] )
-                os.popen("sudo -S %s"%("mv {} /home/keystone/Autograding/{}/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
-                if os.path.exists("/home/keystone/Autograding/{}/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],f.filename  )):
-                    return "True"
+                    
+                os.popen("sudo -S %s"%("mv {} /home/keystone/Autograding/{}/submitted/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
+                
+                if os.path.exists("/home/keystone/Autograding/{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],f.filename  )):
+                    return render_template("index.html",  correct = True)
                 else:
-                    return "False"
-                return render_template("index.html",  name = user)
+                    return render_template("index.html",  correct = False)
+                
     except:
         print("Something went wrong")
 

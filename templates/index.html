@@ -9,12 +9,16 @@
     <h1> Welcome {{ name }}</h1>
     <body style="background-color: rgb(127, 200, 0);">
         
-        <h2>Upload your files here </h2>
+        <h2>Upload for nbgrader </h2>
         <br>
         <form method="POST" action="/nbg" enctype="multipart/form-data">
             
             Select a file: <input type="file" name = "uploaded_file" /> <br>
             <br><br>
+            {% if correct == True %}
+                <p> correct upload </p>
+            {% end if %}
+
             <input type="submit" name = "uploader" value="uploader" />
 
         </form>
