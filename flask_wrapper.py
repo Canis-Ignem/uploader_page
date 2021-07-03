@@ -118,7 +118,7 @@ def get_grade(email,ex,batch):
 
         q4 = "Select auto_score,cell_id from grade where notebook_id = '{}'".format(nb_id)
         grades = pd.read_sql_query( q4 , con)
-        return grades
+        
         cell_list = grades['cell_id'].values.tolist()
         as_str = ','.join("\'"+str(cell_list[i])+ "\'"  for i in range(len(cell_list)))
         q5 = "Select max_score from grade_cells where id IN ({})".format( as_str )
