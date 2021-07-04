@@ -15,7 +15,7 @@ from nbgrader.apps import NbGraderAPI
 from traitlets.config import Config
 
 config = Config()
-config.CourseDirectory.course_id = "course101"
+config.CourseDirectory.course_id = "AI_mar21"
 
 api = NbGraderAPI(config=config)
 
@@ -74,11 +74,12 @@ def nbgrader_ex():
                 with open("pass",'r') as p:
                     passwd = p.read()
                 
-                os.popen("sudo -S %s"%("mkdir /home/keystone/Autograding/{}/submitted/{}/{}".format(batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
-                os.popen("sudo -S %s"%("mv {} /home/keystone/Autograding/{}/submitted/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
-                time.sleep(2)
-                if os.path.isfile("/home/keystone/Autograding/{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],secure_filename(f.filename) )):
+                os.popen("sudo -S %s"%("mkdir ./{}/submitted/{}/{}".format(batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
+                os.popen("sudo -S %s"%("mv {} ./{}/submitted/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
+                
+                if os.path.isfile("./{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],secure_filename(f.filename) )):
                     
+                    return "file"
                     api.autograde("py1", "jonperezetxebarria@gmail.com", force=True, create=True)
                     grade, max_score = get_grade(email, secure_filename(f.filename)[:-6], batch)
                     
