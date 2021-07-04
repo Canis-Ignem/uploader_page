@@ -19,7 +19,7 @@ config = Config()
 config.CourseDirectory.course_id = "./AI_Mar21"
 '''
 
-api = NbGraderAPI(coursedir="./AI_Mar21")
+api = NbGraderAPI(config="./AI_Mar21/nbgrader_config.py")
 
 
 
