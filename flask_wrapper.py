@@ -9,6 +9,8 @@ import re
 import sqlite3 as sql
 import pandas as pd
 from post_data import send_json
+import time
+
 app = Flask(__name__, template_folder="./templates")
 
 uploads_dir = os.path.join(app.instance_path, 'uploads')
@@ -64,15 +66,15 @@ def nbgrader_ex():
                 
                 os.popen("sudo -S %s"%("mkdir /home/keystone/Autograding/{}/submitted/{}/{}".format(batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
                 os.popen("sudo -S %s"%("mv {} /home/keystone/Autograding/{}/submitted/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
-                
+                time.sleep(1)
                 if os.path.isdir("/home/keystone/Autograding/{}/submitted/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],f.filename  )):
                     
-                    os.popen("cd  /home/keystone/Autograding/{} \n nbgrader autograde --student {} --assignment ml1 ".format(email, secure_filename(f.filename)[:-6]))
+                    os.popen("cd  /home/keystone/Autograding/{} \n nbgrader autograde --student {} --assignment {} ".format(batch, email, secure_filename(f.filename)[:-6]))
                     grade, max_score = get_grade(email, secure_filename(f.filename)[:-6], batch)
                     
                     response = send_json(email, secure_filename(f.filename)[:-6], max_score, grade)
                     
-                    return render_template("index.html", name = user,  correct = "Your score: "+ str(grade/max_score) )
+                    return render_template("index.html", name = user,  correct = "Your score: "+ str(grade) )
                 else:
                     return render_template("index.html", name = user,  correct = "File failed upload")
                 
