@@ -11,7 +11,7 @@ import pandas as pd
 from post_data import send_json
 import time
 import subprocess
-from nbgrader.apps import NbGraderAPI
+from nbgrader.apps.api import NbGraderAPI
 from traitlets.config import Config
 
 '''
@@ -19,7 +19,7 @@ config = Config()
 config.CourseDirectory.course_id = "./AI_Mar21"
 '''
 
-api = NbGraderAPI(config="./AI_Mar21/nbgrader_config.py")
+api = NbGraderAPI(coursedir="./AI_Mar21/")
 
 
 
