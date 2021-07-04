@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from md5 import md5
 
 passwd = ""
-with open("pass",'r') as p:
+with open("passdb",'r') as p:
         passwd = p.read()
 
 engine = create_engine("mysql+pymysql://phpmyadmin:{}@localhost:3306/phpmyadmin".format(passwd[:-1]))
