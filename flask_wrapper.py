@@ -89,8 +89,6 @@ def test():
     batch = db.get_batch(user)
     email = db.get_email(user)
     
-    f = request.files["uploaded_file"]
-    f.save( secure_filename(f.filename))
     passwd = ""
     with open("pass",'r') as p:
         passwd = p.read()
