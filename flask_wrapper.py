@@ -14,10 +14,12 @@ import subprocess
 from nbgrader.apps import NbGraderAPI
 from traitlets.config import Config
 
+'''
 config = Config()
-config.CourseDirectory.course_id = "AI_Mar21"
+config.CourseDirectory.course_id = "./AI_Mar21"
+'''
 
-api = NbGraderAPI(config=config)
+api = NbGraderAPI(coursedir="./AI_Mar21")
 
 
 
