@@ -11,13 +11,8 @@ import pandas as pd
 from post_data import send_json
 import time
 import subprocess
-from traitlets.config import Config
-from nbgrader.apps import NbGraderAPI
-from nbgrader.coursedir import CourseDirectory
 
 
-d =  CourseDirectory("AI-Mar21")
-api = NbGraderAPI(coursedir = d)
 
 app = Flask(__name__, template_folder="./templates")
 
@@ -76,7 +71,6 @@ def nbgrader_ex():
                 os.popen("sudo -S %s"%("mv {} /home/keystone/Autograding/{}/submitted/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
                 time.sleep(2)
                 if os.path.isfile("/home/keystone/Autograding/{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],secure_filename(f.filename) )):
-                    
                     
                     #os.popen("cd AI-Mar21 \n nbgrader autograde --student mardukenterprises@gmail.com --assignment py1  ")
                     #response = api.autograde("py1", "mardukenterprises@gmail.com", force=True, create=True)
