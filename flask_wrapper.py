@@ -69,7 +69,7 @@ def nbgrader_ex():
                 time.sleep(1)
                 if os.path.isdir("/home/keystone/Autograding/{}/submitted/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],f.filename  )):
                     
-                    os.popen("cd  /home/keystone/Autograding/{} \n nbgrader autograde --student {} --assignment {} ".format(batch, email, secure_filename(f.filename)[:-6]))
+                    os.popen("cd  /home/keystone/Autograding/{} \n conda activate nbg \n nbgrader autograde --student {} --assignment {} ".format(batch, email, secure_filename(f.filename)[:-6]))
                     grade, max_score = get_grade(email, secure_filename(f.filename)[:-6], batch)
                     
                     response = send_json(email, secure_filename(f.filename)[:-6], max_score, grade)
