@@ -70,7 +70,7 @@ def nbgrader_ex():
                 time.sleep(2)
                 if os.path.isfile("/home/keystone/Autograding/{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],secure_filename(f.filename) )):
                     
-                    os.popen("cd ~/Autograding/AI-Jun21 \n nbgrader autograde --student mardukenterprises@gmail.com --assignment py1")
+                    autograde()
                     grade, max_score = get_grade(email, secure_filename(f.filename)[:-6], batch)
                     
                     response = send_json(email, secure_filename(f.filename)[:-6], max_score, grade)
@@ -82,7 +82,10 @@ def nbgrader_ex():
     except:
         print("Something went wrong")
 
-
+def autograde():
+    
+    os.popen("cd ~/Autograding/AI-Mar21 \n nbgrader autograde --student mardukenterprises@gmail.com --assignment py1")
+    
 @app.route("/logout", methods = ['POST', 'GET'])
 def logout():
     session.pop("uname", None)
