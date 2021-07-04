@@ -70,7 +70,7 @@ def nbgrader_ex():
                 time.sleep(2)
                 if os.path.isfile("/home/keystone/Autograding/{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],secure_filename(f.filename) )):
                     
-                    os.popen("cd /home/keystone/Autograding/{} \n conda activate nbg \n nbgrader autograde --student {} --assignment {} ".format(batch, email, secure_filename(f.filename)[:-6]), 'w').write(passwd)
+                    os.popen("cd ~/Autograding/AI-Jun21 \n nbgrader autograde --student mardukenterprises@gmail.com --assignment py1")
                     grade, max_score = get_grade(email, secure_filename(f.filename)[:-6], batch)
                     
                     response = send_json(email, secure_filename(f.filename)[:-6], max_score, grade)
@@ -140,7 +140,7 @@ def get_grade(email,ex,batch):
         return grades['auto_score'].sum(), max_score['max_score'].sum()
     except:
         #print("No submission for that student")
-        return "No submission for this student"
+        return "No submission for this student", 0
     
 
 @app.route("/register")
