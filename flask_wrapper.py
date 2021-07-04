@@ -17,7 +17,7 @@ from nbgrader.apps import NbGraderAPI
 
 
 api = NbGraderAPI()
-api.coursedir.CourseDirectory = "AI-Mar21"
+api.coursedir = "AI-Mar21"
 
 app = Flask(__name__, template_folder="./templates")
 
