@@ -149,7 +149,7 @@ def get_grade(email,ex,batch):
         return grades['auto_score'].sum(), max_score['max_score'].sum()
     except:
         #print("No submission for that student")
-        return "No submission for this student", 0
+        return 0, 1
     
 
 @app.route("/register")
