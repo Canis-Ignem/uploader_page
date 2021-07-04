@@ -79,7 +79,8 @@ def nbgrader_ex():
                     
                     
                     #os.popen("cd AI-Mar21 \n nbgrader autograde --student mardukenterprises@gmail.com --assignment py1  ")
-                    api.autograde("py1", "mardukenterprises@gmail.com", force=True, create=True)
+                    response = api.autograde("py1", "mardukenterprises@gmail.com", force=True, create=True)
+                    return response
                     grade, max_score = get_grade(email, secure_filename(f.filename)[:-6], batch)
                     #response = send_json(email, secure_filename(f.filename)[:-6], max_score, grade)
                     
