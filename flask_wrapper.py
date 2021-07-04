@@ -84,7 +84,7 @@ def nbgrader_ex():
 
 def autograde():
     
-    os.popen("cd ~/Autograding/AI-Mar21 \n nbgrader autograde --student mardukenterprises@gmail.com --assignment py1")
+    os.popen("cd ~/Autograding/AI-Mar21 \n nbgrader autograde --student jonperezetxebarria@gmail.com --assignment py1")
     
 @app.route("/logout", methods = ['POST', 'GET'])
 def logout():
