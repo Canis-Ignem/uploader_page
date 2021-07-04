@@ -12,7 +12,7 @@ from post_data import send_json
 import time
 import subprocess
 from traitlets.config import Config
-from nbgrader.apps import NbGraderAPI
+from nbgrader.apps.api import NbGraderAPI
 import nbgrader
 
 
