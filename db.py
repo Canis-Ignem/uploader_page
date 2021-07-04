@@ -5,7 +5,7 @@ from md5 import md5
 passwd = ""
 with open("passdb",'r') as p:
         passwd = p.read()
-print("mysql+pymysql://phpmyadmin:{}@localhost:3306/phpmyadmin".format(passwd[:-1]))
+        
 engine = create_engine("mysql+pymysql://phpmyadmin:{}@localhost:3306/phpmyadmin".format(passwd[:-1]))
 conn = engine.connect()
 
