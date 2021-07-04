@@ -68,7 +68,7 @@ def nbgrader_ex():
                 os.popen("sudo -S %s"%("mv {} /home/keystone/Autograding/{}/submitted/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
                 time.sleep(2)
                 if os.path.isfile("/home/keystone/Autograding/{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],secure_filename(f.filename) )):
-                    
+                    return "a"
                     os.popen("cd  /home/keystone/Autograding/{} \n conda activate nbg \n nbgrader autograde --student {} --assignment {} ".format(batch, email, secure_filename(f.filename)[:-6]))
                     grade, max_score = get_grade(email, secure_filename(f.filename)[:-6], batch)
                     
