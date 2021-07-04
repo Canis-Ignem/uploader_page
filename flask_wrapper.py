@@ -75,9 +75,9 @@ def nbgrader_ex():
                     
                     response = send_json(email, secure_filename(f.filename)[:-6], max_score, grade)
                     
-                    return render_template("index.html", name = user,  correct = "Your score: "+ str(grade/max_score*100)+'%' )
+                    return render_template("index.html", name = user,  correct = "File uploaded correctly"  ) # "Your score: "+ str(grade/max_score*100)+'%'
                 else:
-                    return render_template("index.html", name = user,  correct = "File failed upload")
+                    return render_template("index.html", name = user,  correct = "File failed to upload")
                 
     except:
         print("Something went wrong")
