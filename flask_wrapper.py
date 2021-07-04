@@ -11,15 +11,7 @@ import pandas as pd
 from post_data import send_json
 import time
 import subprocess
-from nbgrader.apps.api import NbGraderAPI
 from traitlets.config import Config
-
-'''
-config = Config()
-config.CourseDirectory.course_id = "./AI_Mar21"
-'''
-
-api = NbGraderAPI(coursedir="./AI_Mar21/")
 
 
 
@@ -82,7 +74,7 @@ def nbgrader_ex():
                 if os.path.isfile("./{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],secure_filename(f.filename) )):
                     
                     
-                    api.autograde("py1", "mardukenterprises@gmail.com", force=True, create=True)
+                    os.popen("cd AI-Mar21 \n nbgrader autograde --student mardukenterprises@gmail.com --assignment py1  ")
                     
                     grade, max_score = get_grade(email, secure_filename(f.filename)[:-6], batch)
                     response = send_json(email, secure_filename(f.filename)[:-6], max_score, grade)
