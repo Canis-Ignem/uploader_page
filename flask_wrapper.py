@@ -72,19 +72,19 @@ def nbgrader_ex():
                 with open("pass",'r') as p:
                     passwd = p.read()
                 
-                os.popen("sudo -S %s"%("mkdir ./{}/submitted/{}/{}".format(batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
-                os.popen("sudo -S %s"%("mv {} ./{}/submitted/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
+                os.popen("sudo -S %s"%("mkdir /home/keystone/Autograding/{}/submitted/{}/{}".format(batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
+                os.popen("sudo -S %s"%("mv {} /home/keystone/Autograding/{}/submitted/{}/{}".format(f.filename,batch, email,secure_filename(f.filename)[:-6] )), 'w').write(passwd)
                 time.sleep(2)
-                if os.path.isfile("./{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],secure_filename(f.filename) )):
+                if os.path.isfile("/home/keystone/Autograding/{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],secure_filename(f.filename) )):
                     
                     
                     #os.popen("cd AI-Mar21 \n nbgrader autograde --student mardukenterprises@gmail.com --assignment py1  ")
-                    response = api.autograde("py1", "mardukenterprises@gmail.com", force=True, create=True)
-                    return response
-                    grade, max_score = get_grade(email, secure_filename(f.filename)[:-6], batch)
+                    #response = api.autograde("py1", "mardukenterprises@gmail.com", force=True, create=True)
+                    #return response
+                    #grade, max_score = get_grade(email, secure_filename(f.filename)[:-6], batch)
                     #response = send_json(email, secure_filename(f.filename)[:-6], max_score, grade)
                     
-                    return render_template("index.html", name = user,  correct = "Your score: "+ str(grade/max_score*100)+'%'  ) # "Your score: "+ str(grade/max_score*100)+'%'
+                    return render_template("index.html", name = user,  correct = "File uploaded successfully"  ) # "Your score: "+ str(grade/max_score*100)+'%'
                 else:
                     return render_template("index.html", name = user,  correct = "File failed to upload")
                 
