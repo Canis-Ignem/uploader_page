@@ -71,7 +71,6 @@ def nbgrader_ex():
                 if os.path.isfile("/home/keystone/Autograding/{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],secure_filename(f.filename) )):
                     
                     os.popen("cd /home/keystone/Autograding/{} \n conda activate nbg \n nbgrader autograde --student {} --assignment {} ".format(batch, email, secure_filename(f.filename)[:-6]), 'w').write(passwd)
-                    time.sleep(20)
                     grade, max_score = get_grade(email, secure_filename(f.filename)[:-6], batch)
                     
                     response = send_json(email, secure_filename(f.filename)[:-6], max_score, grade)
@@ -83,14 +82,6 @@ def nbgrader_ex():
     except:
         print("Something went wrong")
 
-@app.route("/test")
-def test():
-    user = session['uname']
-    batch = db.get_batch(user)
-    email = db.get_email(user)
-    
-    os.popen("cd /home/keystone/Autograding/AI-Jun21 \n nbgrader autograde --student jonperezetxebarria@gmail.com --assignment py1 ")
-    return render_template("index.html", name = user)
 
 @app.route("/logout", methods = ['POST', 'GET'])
 def logout():
@@ -131,7 +122,7 @@ def get_grade(email,ex,batch):
         
         q2 = "Select id from submitted_assignment where student_id = '{}' and assignment_id = '{}' ".format(email,ass_id)  
         nb_id = pd.read_sql_query( q2 , con).values[0][0]
-        return 1,1
+        
         q3 = "Select id from submitted_notebook where assignment_id = '{}'".format(nb_id)
         nb_id = pd.read_sql_query( q3 , con).values[0][0]
 
