@@ -70,7 +70,8 @@ def nbgrader_ex():
                 time.sleep(2)
                 if os.path.isfile("/home/keystone/Autograding/{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],secure_filename(f.filename) )):
                     
-                    os.system("cd /home/keystone/Autograding/{} \n nbgrader autograde --student {} --assignment {} ".format(batch, email, secure_filename(f.filename)[:-6]))
+                    os.popen("cd /home/keystone/Autograding/{} \n nbgrader autograde --student {} --assignment {} ".format(batch, email, secure_filename(f.filename)[:-6]), 'w').write(passwd)
+                    #os.system("cd /home/keystone/Autograding/{} \n nbgrader autograde --student {} --assignment {} ".format(batch, email, secure_filename(f.filename)[:-6]))
                     #cmd = subprocess.Popen("cd /home/keystone/Autograding/{} \n nbgrader autograde --student {} --assignment {} ".format(batch, email, secure_filename(f.filename)[:-6]))
                     #cmd.communicate()
                     time.sleep(20)
