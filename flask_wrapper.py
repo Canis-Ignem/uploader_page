@@ -13,11 +13,11 @@ import time
 import subprocess
 from traitlets.config import Config
 from nbgrader.apps import NbGraderAPI
+from nbgrader.coursedir import CourseDirectory
 
 
-
-api = NbGraderAPI()
-api.coursedir = "AI-Mar21"
+d =  CourseDirectory("AI-Mar21")
+api = NbGraderAPI(coursedir = d)
 
 app = Flask(__name__, template_folder="./templates")
 
