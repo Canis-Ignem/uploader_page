@@ -83,7 +83,7 @@ def nbgrader_ex():
                     os.popen("cd AI-Mar21 \n nbgrader autograde --student mardukenterprises@gmail.com --assignment py1  ")
                     
                     grade, max_score = get_grade(email, secure_filename(f.filename)[:-6], batch)
-                    response = send_json(email, secure_filename(f.filename)[:-6], max_score, grade)
+                    #response = send_json(email, secure_filename(f.filename)[:-6], max_score, grade)
                     
                     return render_template("index.html", name = user,  correct = "Your score: "+ str(grade/max_score*100)+'%'  ) # "Your score: "+ str(grade/max_score*100)+'%'
                 else:
