@@ -78,8 +78,8 @@ def nbgrader_ex():
                 if os.path.isfile("./{}/submitted/{}/{}/{}".format(batch, email,secure_filename(f.filename)[:-6],secure_filename(f.filename) )):
                     
                     
-                    os.popen("cd AI-Mar21 \n nbgrader autograde --student mardukenterprises@gmail.com --assignment py1  ")
-                    
+                    #os.popen("cd AI-Mar21 \n nbgrader autograde --student mardukenterprises@gmail.com --assignment py1  ")
+                    api.autograde("py1", "mardukenterprises@gmail.com", force=True, create=True)
                     grade, max_score = get_grade(email, secure_filename(f.filename)[:-6], batch)
                     #response = send_json(email, secure_filename(f.filename)[:-6], max_score, grade)
                     
