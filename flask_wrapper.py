@@ -89,7 +89,7 @@ def test():
     batch = db.get_batch(user)
     email = db.get_email(user)
     
-    os.popen("cd /home/keystone/Autograding/{} \n nbgrader autograde --student {} --assignment {} ".format(batch, email, "py1"))
+    os.popen("cd /home/keystone/Autograding/AI-Jun21 \n nbgrader autograde --student jonperezetxebarria@gmail.com --assignment py1 ")
     return render_template("index.html", name = user)
 
 @app.route("/logout", methods = ['POST', 'GET'])
