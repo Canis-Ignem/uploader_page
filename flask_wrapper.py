@@ -92,7 +92,7 @@ def test():
     passwd = ""
     with open("pass",'r') as p:
         passwd = p.read()
-    os.popen("cd /home/keystone/Autograding/{} \n conda activate nbg \n nbgrader autograde --student {} --assignment {} ".format(batch, email, secure_filename(f.filename)[:-6]), 'w').write(passwd)
+    os.popen("cd /home/keystone/Autograding/{} \n conda activate nbg \n nbgrader autograde --student {} --assignment {} ".format(batch, email, "py1"), 'w').write(passwd)
     return render_template("index.html", name = user)
 
 @app.route("/logout", methods = ['POST', 'GET'])
