@@ -12,14 +12,12 @@ from post_data import send_json
 import time
 import subprocess
 from traitlets.config import Config
-from nbgrader.apps.api import NbGraderAPI
-import nbgrader
+from nbgrader.apps import NbGraderAPI
 
 
 
-nbgrader.coursedir.CourseDirectory = "AI-Mar21"
-
-api = NbGraderAPI(coursedir=nbgrader.coursedir.CourseDirector)
+api = NbGraderAPI()
+api.coursedir.CourseDirectory = "AI-Mar21"
 
 app = Flask(__name__, template_folder="./templates")
 
