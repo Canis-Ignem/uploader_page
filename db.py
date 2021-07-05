@@ -1,6 +1,9 @@
-import pymysql
 from sqlalchemy import create_engine
+import sqlite3 as sql
 from md5 import md5
+import pandas as pd
+import pymysql
+
 
 passwd = ""
 with open("passdb",'r') as p:
@@ -46,3 +49,33 @@ def get_email(user):
     email = res.fetchone()
     return str(email[0])
 
+
+def get_grades(batch,email,ex):
+    
+    try:
+        con = sql.connect("./{}/gradebook.db".format(batch))
+        
+        q1 = "SELECT id FROM assignment where name ='{}'".format(ex)
+        ass_id = pd.read_sql_query( q1 , con).values[0][0]
+        
+        q2 = "Select id from submitted_assignment where student_id = '{}' and assignment_id = '{}' ".format(email,ass_id)  
+        nb_id = pd.read_sql_query( q2 , con).values[0][0]
+        
+        q3 = "Select id from submitted_notebook where assignment_id = '{}'".format(nb_id)
+        nb_id = pd.read_sql_query( q3 , con).values[0][0]
+
+        q4 = "Select auto_score,cell_id from grade where notebook_id = '{}'".format(nb_id)
+        grades = pd.read_sql_query( q4 , con)
+        
+        cell_list = grades['cell_id'].values.tolist()
+        as_str = ','.join("\'"+str(cell_list[i])+ "\'"  for i in range(len(cell_list)))
+        q5 = "Select max_score from grade_cells where id IN ({})".format( as_str )
+        max_score = pd.read_sql_query( q5 , con)
+        #print(max_score['max_score'].sum())
+       
+        #report = " The student:  {} \n Assigment:   {} \n Total marks: {}/{}".format(email,ex,grades['auto_score'].sum(),max_score['max_score'].sum())
+        #print(report)
+        return grades['auto_score'].sum(), max_score['max_score'].sum()
+    except:
+        #print("No submission for that student")
+        return 0, 1
