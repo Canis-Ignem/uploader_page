@@ -175,7 +175,8 @@ def sign_in():
                 with open("pass",'r') as p:
                     passwd = p.read()
                 
-                os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
+                os.popen("sudo -S %s"%("mkdir /home/keystone/Autograding/{}/submitted/{}".format(batch, email )), 'w').write(passwd)
+                #os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
                 return render_template("index.html", name = session['uname'] )
             else:
                 return "Some of the fields where not correct"
