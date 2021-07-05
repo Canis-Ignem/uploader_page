@@ -15,7 +15,7 @@ sender_email = "jonperezetxebarria@gmail.com"
 
 def send_emails(batch, assig):
     
-    nb_dir = "~/Autograding/{}/submitted/"
+    nb_dir = "/home/keystone/Autograding/{}/submitted/"
     
     for email in os.listdir(nb_dir.format(batch)):
         
