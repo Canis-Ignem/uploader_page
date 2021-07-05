@@ -22,10 +22,10 @@ def send_emails(batch, assig):
             subject = "Grade "+assig
             #print(data.values[i][0])
             
-            grade, max = db.get_grades(batch, email, assig)
+            grade, max_g = db.get_grades(batch, email, assig)
             #print(receiver_email)
             #print(mess)
-            body = "You scored: {}/{}".format(grade,max)
+            body = "You scored: {}%".format(round(grade/max_g, 2))
             pas= "mpmppwoxfvwnzbyg"
             '''
             with open("./pass",'r') as f:
@@ -35,7 +35,7 @@ def send_emails(batch, assig):
             message = "Subject: {}\n\n{}".format(subject,body)
             print(message)
             
-            
+            '''
             try:
                 s = smtplib.SMTP('smtp.gmail.com', 587)
                 s.ehlo()
@@ -47,7 +47,7 @@ def send_emails(batch, assig):
             except Exception as vx:
                 
                 print(vx)
-            
+            '''
             
 def main():
     

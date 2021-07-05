@@ -75,6 +75,7 @@ def get_grades(batch,email,ex):
        
         #report = " The student:  {} \n Assigment:   {} \n Total marks: {}/{}".format(email,ex,grades['auto_score'].sum(),max_score['max_score'].sum())
         #print(report)
+        con.close()
         return grades['auto_score'].sum(), max_score['max_score'].sum()
     except:
         #print("No submission for that student")
