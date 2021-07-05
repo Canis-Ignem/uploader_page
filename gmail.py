@@ -35,8 +35,8 @@ def send_emails(batch, assig):
 
             message = "Subject: {}\n\n{}".format(subject,body)
             print(message + "\n\n")
-            send_json(email,assig,max_score,score)
-            
+            response = send_json(email,assig,max_score,score)
+            print(response + "\n\n")
             try:
                 s = smtplib.SMTP('smtp.gmail.com', 587)
                 s.ehlo()
