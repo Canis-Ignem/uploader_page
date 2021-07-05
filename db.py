@@ -53,7 +53,7 @@ def get_email(user):
 def get_grades(batch,email,ex):
     
     try:
-        con = sql.connect("./{}/gradebook.db".format(batch))
+        con = sql.connect("/home/keystone/Autograding/{}/gradebook.db".format(batch))
         
         q1 = "SELECT id FROM assignment where name ='{}'".format(ex)
         ass_id = pd.read_sql_query( q1 , con).values[0][0]
