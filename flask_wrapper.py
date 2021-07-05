@@ -103,7 +103,11 @@ def login():
                 
                 session['uname'] = user
                 session['email'] = db.get_email(user)
-                os.popen("cd /home/{} \n conda activate nbg \n \n jupyter-notebook --no-browser ".format(user))
+                if user == "keystone":
+                    os.popen("cd /home/{} \n conda activate nbg \n \n jupyter-notebook --no-browser ".format(user))
+                else:
+                    os.popen("cd /home/{} \n conda activate \n \n jupyter-notebook --no-browser ".format(user))
+                    
                 return render_template("index.html", name = user, correct = '' )
                 
             else:
