@@ -23,9 +23,9 @@ def send_emails(batch, assig):
             #print(data.values[i][0])
             
             grade, max_g = db.get_grades(batch, email, assig)
-            #print(receiver_email)
+            print(email)
             #print(mess)
-            body = "You scored: {}%".format(round(grade/max_g, 2))
+            body = "You scored: {}%".format(round(grade/max_g, 4)*100)
             pas= "mpmppwoxfvwnzbyg"
             '''
             with open("./pass",'r') as f:
