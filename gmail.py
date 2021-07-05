@@ -1,3 +1,4 @@
+from send_data import send_json
 import pandas as pd
 import numpy as np
 import argparse
@@ -22,10 +23,10 @@ def send_emails(batch, assig):
             subject = "Grade "+assig
             #print(data.values[i][0])
             
-            grade, max_g = db.get_grades(batch, email, assig)
-            print(email)
+            score, max_score = db.get_grades(batch, email, assig)
+            print(email+": \n")
             #print(mess)
-            body = "You scored: {}%".format(round(grade/max_g, 4)*100)
+            body = "You scored: {}%".format(round(score/max_score, 4)*100)
             pas= "mpmppwoxfvwnzbyg"
             '''
             with open("./pass",'r') as f:
@@ -33,9 +34,9 @@ def send_emails(batch, assig):
             '''
 
             message = "Subject: {}\n\n{}".format(subject,body)
-            print(message)
+            print(message + "\n\n")
+            send_json(email,assig,max_score,score)
             
-            '''
             try:
                 s = smtplib.SMTP('smtp.gmail.com', 587)
                 s.ehlo()
@@ -47,7 +48,7 @@ def send_emails(batch, assig):
             except Exception as vx:
                 
                 print(vx)
-            '''
+            
             
 def main():
     
