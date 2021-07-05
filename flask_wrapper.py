@@ -103,11 +103,7 @@ def login():
                 
                 session['uname'] = user
                 session['email'] = db.get_email(user)
-                if user == "keystone":
-                    os.popen("cd /home/keystone/Autograding/AI-Jun21 \n conda activate nbg \n \n jupyter-notebook --no-browser ".format(user))
-                else:
-                    os.popen("cd /home/{} \n conda activate \n \n jupyter-notebook --no-browser ".format(user))
-                    
+                os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
                 return render_template("index.html", name = user, correct = '' )
                 
             else:
@@ -179,8 +175,7 @@ def sign_in():
                 with open("pass",'r') as p:
                     passwd = p.read()
                 
-                os.popen("sudo -S %s"%("mkdir /home/keystone/Autograding/{}/submitted/{}".format(batch, email )), 'w').write(passwd)
-                #os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
+                os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
                 return render_template("index.html", name = session['uname'] )
             else:
                 return "Some of the fields where not correct"
@@ -193,7 +188,7 @@ def sign_in():
 def launch_jupyter():
     if os.path.isdir("/home/{}".format(session['uname'])):
         
-        response = os.popen("jupyter-notebook list").readlines()
+        response = os.popen(" jupyter-notebook list").readlines()
         for i in range(1, len(response)):
             
             if re.findall('[a-z]+',str(response[i].split("/home/")[1]))[0] == re.findall('[a-z]+',str(session['uname']))[0]:
