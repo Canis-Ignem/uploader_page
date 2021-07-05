@@ -17,7 +17,7 @@ def send_emails(batch, assig):
     
     nb_dir = "home/keystone/Autograding/"
     
-    for email in os.list(nb_dir+batch+"/submitted"):
+    for email in os.listdir(nb_dir+batch+"/submitted"):
         
             subject = "Grade "+assig
             #print(data.values[i][0])
