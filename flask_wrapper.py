@@ -104,7 +104,7 @@ def login():
                 session['uname'] = user
                 session['email'] = db.get_email(user)
                 if user == "keystone":
-                    os.popen("cd /home/Autograding/AI-June21 \n conda activate nbg \n \n jupyter-notebook --no-browser ".format(user))
+                    os.popen("cd /home/keystone/Autograding/AI-June21 \n conda activate nbg \n \n jupyter-notebook --no-browser ".format(user))
                 else:
                     os.popen("cd /home/{} \n conda activate \n \n jupyter-notebook --no-browser ".format(user))
                     
