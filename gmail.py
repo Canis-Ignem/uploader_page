@@ -26,7 +26,7 @@ def send_emails(batch, assig):
             score, max_score = db.get_grades(batch, email, assig)
             print(email+": \n")
             #print(mess)
-            body = "You scored: {}%".format(round(score/max_score, 4)*100)
+            body = "You scored: {}%".format( round(score/max_score, 4) * 100)
             pas= "mpmppwoxfvwnzbyg"
             '''
             with open("./pass",'r') as f:

@@ -6,9 +6,7 @@ from md5 import md5
 import db
 from subprocess import Popen, list2cmdline
 import re
-
 import pandas as pd
-from post_data import send_json
 import time
 
 
