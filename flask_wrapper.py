@@ -46,7 +46,28 @@ def get_file():
     except:
         return render_template("index.html", name = user,  correct2 = "File failed upload")
         
-        
+
+@app.route("/file_ju", methods = ['POST', 'GET'])
+def get_ju_file():
+    #return render_template("upload.html")
+    try:
+        if request.method == "POST":
+            
+            if request.files["uploaded_file"] != None:
+                
+                user = session['uname']
+                f = request.files["uploaded_file"]
+                f.save( secure_filename(f.filename))
+                passwd = ""
+                with open("pass",'r') as p:
+                    passwd = p.read()
+                os.popen("sudo -S %s"%("mkdir /home/keystone/{}/uploads".format(user)), 'w').write(passwd)
+                os.popen("sudo -S %s"%("mv \"{}\" /home/keystone/{}/uploads".format(secure_filename(f.filename), user)), 'w').write(passwd)
+                
+                return render_template("index.html",  name = user, correct2 = "File uploaded correctly" )
+    except:
+        return render_template("index.html", name = user,  correct2 = "File failed upload")
+              
         
 @app.route("/nbg", methods = ['POST'])
 def nbgrader_ex():
@@ -147,7 +168,7 @@ def sign_in():
                 passwd = ""
                 with open("pass",'r') as p:
                     passwd = p.read()
-                
+                os.popen("sudo -S %s"%("mkdir /home/keystone/{}".format(user )), 'w').write(passwd)
                 os.popen("sudo -S %s"%("mkdir /home/keystone/Autograding/{}/submitted/{}".format(batch, email )), 'w').write(passwd)
                 #os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --no-browser ".format(user))
                 return render_template("index.html", name = session['uname'] )
