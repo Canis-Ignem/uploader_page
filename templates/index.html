@@ -23,21 +23,7 @@
 
         </form>
 
-        <br><br><br>
-
-        <h2>File upload to you account </h2>
-        <br>
-        <form method="POST" action="/file_up" enctype="multipart/form-data">
-            
-            Select a file: <input type="file" name = "uploaded_file" /> <br>
-            <br>
-            {{ correct2 }}
-            <br>
-               
-
-            <input type="submit" name = "uploader" value="uploader" />
-
-        </form>
+        <br><br>
 
         <h2>File upload to for jupyter </h2>
         <br>
@@ -58,11 +44,26 @@
         <a href="/launch_jupyter"> <input type="button" value="Launch Jupyter Notebook" target="_blank">  </a>
 
         <p> {{warning}} </p>
+
+
+        <br><br>
+
+        <h2>File upload to you account </h2>
+        <br>
+        <form method="POST" action="/file_up" enctype="multipart/form-data">
+            
+            Select a file: <input type="file" name = "uploaded_file" /> <br>
+            <br>
+            {{ correct2 }}
+            <br>
+               
+
+            <input type="submit" name = "uploader" value="uploader" />
+
+        </form>
+
             
         <a href="/logout"> <input type="button" value="Log Out">  </a>
-
-
-        <br><br><br>
 
 
 
