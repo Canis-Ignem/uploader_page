@@ -43,11 +43,11 @@ def get_file():
                     os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
                     os.popen("sudo -S %s"%("mv \"{}\" /home/{}/uploads".format(secure_filename(f.filename), user)), 'w').write(passwd)
                     
-                    return render_template("index.html",  name = user, correct2 = "File uploaded correctly" )
+                    return render_template("index.html",  name = user, correct3 = "File uploaded correctly" )
         else:
-            render_template("index.html",  name = session['uname'], correct2 = "You have no user account in the server contact administration" )
+            render_template("index.html",  name = session['uname'], correct3 = "You have no user account in the server contact administration" )
     except:
-        return render_template("index.html", name = user,  correct2 = "File failed upload")
+        return render_template("index.html", name = user,  correct3 = "File failed upload")
         
 
 @app.route("/file_ju", methods = ['POST', 'GET'])
