@@ -29,20 +29,23 @@ def index():
 def get_file():
     #return render_template("upload.html")
     try:
-        if request.method == "POST":
-            
-            if request.files["uploaded_file"] != None:
+        if os.path.isdir("/home/{}".format(session['uname'])):
+            if request.method == "POST":
                 
-                user = session['uname']
-                f = request.files["uploaded_file"]
-                f.save( secure_filename(f.filename))
-                passwd = ""
-                with open("pass",'r') as p:
-                    passwd = p.read()
-                os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
-                os.popen("sudo -S %s"%("mv \"{}\" /home/{}/uploads".format(secure_filename(f.filename), user)), 'w').write(passwd)
-                
-                return render_template("index.html",  name = user, correct2 = "File uploaded correctly" )
+                if request.files["uploaded_file"] != None:
+                    
+                    user = session['uname']
+                    f = request.files["uploaded_file"]
+                    f.save( secure_filename(f.filename))
+                    passwd = ""
+                    with open("pass",'r') as p:
+                        passwd = p.read()
+                    os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
+                    os.popen("sudo -S %s"%("mv \"{}\" /home/{}/uploads".format(secure_filename(f.filename), user)), 'w').write(passwd)
+                    
+                    return render_template("index.html",  name = user, correct2 = "File uploaded correctly" )
+        else:
+            render_template("index.html",  name = session['uname'], correct2 = "You have no user account in the server contact administration" )
     except:
         return render_template("index.html", name = user,  correct2 = "File failed upload")
         
