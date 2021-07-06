@@ -64,8 +64,8 @@ def get_ju_file():
                 passwd = ""
                 with open("pass",'r') as p:
                     passwd = p.read()
-                os.popen("sudo -S %s"%("mkdir /home/keystone/{}/uploads".format(user)), 'w').write(passwd)
-                os.popen("sudo -S %s"%("mv \"{}\" /home/keystone/{}/uploads".format(secure_filename(f.filename), user)), 'w').write(passwd)
+                os.popen("sudo -S %s"%("mkdir /home/keystone/jupy/{}/uploads".format(user)), 'w').write(passwd)
+                os.popen("sudo -S %s"%("mv \"{}\" /home/keystone/jupy/{}/uploads".format(secure_filename(f.filename), user)), 'w').write(passwd)
                 
                 return render_template("index.html",  name = user, correct2 = "File uploaded correctly" )
     except:
