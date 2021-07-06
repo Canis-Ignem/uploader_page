@@ -185,11 +185,10 @@ def sign_in():
 @app.route("/launch_jupyter")
 def launch_jupyter():
     
-    if os.path.isdir("/home/keystone/{}".format(session['uname'])): 
+    if os.path.isdir("/home/keystone/jupy/{}".format(session['uname'])): 
         response = os.popen(" jupyter-notebook list").readlines()
 
         for i in range(1, len(response)):
-            
             
             if re.findall('[a-z]+',str(response[i].split("/")[-1]))[0] == re.findall('[a-z]+',str(session['uname']))[0]:
                 return redirect("http://88.1.56.23:" + response[i].split(":")[2])
