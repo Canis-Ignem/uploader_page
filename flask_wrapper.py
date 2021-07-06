@@ -163,7 +163,7 @@ def launch_jupyter():
     
     if os.path.isdir("/home/keystone/{}".format(session['uname'])): 
         response = os.popen(" jupyter-notebook list").readlines()
-        return response
+        return str(response[0])
         for i in range(1, len(response)):
             
             return re.findall('[a-z]+',str(response[i].split("/home/")[1].split("/")[0]))[0]
