@@ -102,7 +102,11 @@ def login():
                 session['uname'] = user
                 session['email'] = db.get_email(user)
                 
-                os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --allow-root ".format(user))
+                passwd = ""
+                with open("pass",'r') as p:
+                    passwd = p.read()
+                
+                os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n sudo jupyter notebook --allow-root ".format(user), 'w').write(passwd)
                 return render_template("index.html", name = user, correct = '' )
                 
             else:
