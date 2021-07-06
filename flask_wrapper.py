@@ -130,7 +130,7 @@ def login():
                 with open("pass",'r') as p:
                     passwd = p.read()
                 
-                os.popen("cd /home/keystone/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --allow-root ".format(user))
+                os.popen("cd /home/keystone/jupy/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook --allow-root ".format(user))
                 return render_template("index.html", name = user, correct = '' )
                 
             else:
