@@ -101,7 +101,12 @@ def login():
                 
                 session['uname'] = user
                 session['email'] = db.get_email(user)
-                os.system("cd /home/{} \n source /home/anaconda3/bin/activate \n\n jupyter-notebook -to notebook ".format(user))
+                
+                passwd = ""
+                with open("pass",'r') as p:
+                    passwd = p.read()
+                    
+                os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook -to notebook ".format(user), 'w').write(passwd)
                 return render_template("index.html", name = user, correct = '' )
                 
             else:
