@@ -166,8 +166,8 @@ def launch_jupyter():
 
         for i in range(1, len(response)):
             
-            return re.findall('[a-z]+',str(response[i].split("/")[-1]))[0]
-            if re.findall('[a-z]+',str(response[i].split("/home/")[1].split("/")[0]))[0] == re.findall('[a-z]+',str(session['uname']))[0]:
+            
+            if re.findall('[a-z]+',str(response[i].split("/")[-1]))[0] == re.findall('[a-z]+',str(session['uname']))[0]:
                 return redirect("http://88.1.56.23:" + response[i].split(":")[2])
     else:
         return render_template("index.html", name = session['uname'],  correct = "", warning = no_user_warning )
