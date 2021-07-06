@@ -101,7 +101,7 @@ def login():
                 
                 session['uname'] = user
                 session['email'] = db.get_email(user)
-                os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook -to notebook ".format(user))
+                os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook ".format(user))
                 return render_template("index.html", name = user, correct = '' )
                 
             else:
