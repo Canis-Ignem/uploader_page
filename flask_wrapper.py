@@ -105,8 +105,8 @@ def login():
                 passwd = ""
                 with open("pass",'r') as p:
                     passwd = p.read()
-                    
-                os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook -to notebook ".format(user), 'w').write(passwd)
+                response = os.popen("cd /home/{} \n source /home/anaconda3/bin/activate \n jupyter-notebook -to notebook ".format(user), 'w').write(passwd)    
+                return = response
                 return render_template("index.html", name = user, correct = '' )
                 
             else:
