@@ -106,7 +106,7 @@ def login():
                 with open("pass",'r') as p:
                     passwd = p.read()
                 
-                os.popen("source /home/anaconda3/bin/activate \n sudo jupyter notebook --notebook-dir /home/{} --allow-root ".format(user), 'w').write(passwd)
+                os.popen("sudo jupyter-notebook --allow-root ", 'w').write(passwd) #--notebook-dir /home/{}
                 return render_template("index.html", name = user, correct = '' )
                 
             else:
