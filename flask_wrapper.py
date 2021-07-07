@@ -185,7 +185,7 @@ def sign_in():
 @app.route("/launch_jupyter")
 def launch_jupyter():
     
-    if os.path.isdir("/home/keystone/jupy/{}".format(session['uname'])): 
+    if os.path.isdir("/home/keystone/jupy/\'{}\'".format(session['uname'])): 
         response = os.popen(" jupyter-notebook list").readlines()
 
         for i in range(1, len(response)):
