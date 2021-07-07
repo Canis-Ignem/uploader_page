@@ -188,7 +188,7 @@ def launch_jupyter():
     if os.path.isdir("/home/keystone/jupy/{}".format(session['uname'])): 
         response = os.popen(" jupyter-notebook list").readlines()
         if len(response) < 2:
-            return render_template("index.html", name = session['uname'],  correct = "", warning = no_user_warning )
+            return render_template("index.html", name = session['uname'],  correct = "", warning = "If you just registered you should re log in if not contact administration" )
         for i in range(1, len(response)):
             
             if re.findall('[a-z]+',str(response[i].split("/")[-1]))[0] == re.findall('[a-z]+',str(session['uname']))[0]:
