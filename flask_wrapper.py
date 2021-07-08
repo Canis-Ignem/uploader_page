@@ -32,18 +32,23 @@ def get_file():
         if os.path.isdir("/home/{}".format(session['uname'])):
             if request.method == "POST":
                 
+                user = session['uname']
+                
                 if request.files["uploaded_file"] != None:
                     
-                    user = session['uname']
-                    f = request.files["uploaded_file"]
-                    f.save( secure_filename(f.filename))
-                    passwd = ""
-                    with open("pass",'r') as p:
-                        passwd = p.read()
-                    os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
-                    os.popen("sudo -S %s"%("mv \"{}\" /home/{}/uploads".format(secure_filename(f.filename), user)), 'w').write(passwd)
                     
-                    return render_template("index.html",  name = user, correct3 = "File uploaded correctly" )
+                    if os.path.isdir("/home/{}".format(user)):
+                        f = request.files["uploaded_file"]
+                        f.save( secure_filename(f.filename))
+                        passwd = ""
+                        with open("pass",'r') as p:
+                            passwd = p.read()
+                        os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
+                        os.popen("sudo -S %s"%("mv \"{}\" /home/{}/uploads".format(secure_filename(f.filename), user)), 'w').write(passwd)
+                        
+                        return render_template("index.html",  name = user, correct3 = "File uploaded correctly" )
+                else:
+                    return render_template("index.html",  name = user, correct3 = "you have no user inside the server contact admisitration" )
         else:
             render_template("index.html",  name = session['uname'], correct3 = "You have no user account in the server contact administration" )
     except:
