@@ -25,7 +25,7 @@ user_dic = {"username": None, "email": None}
 def index():
     return render_template("login.html")
 
-@app.route("/file_up", methods = ['POST', 'GET'])
+@app.route("/file_up", methods = ['POST'])
 def get_file():
     #return render_template("upload.html")
     try:
@@ -55,7 +55,7 @@ def get_file():
         return render_template("index.html", name = user,  correct3 = "File failed upload")
         
 
-@app.route("/file_ju", methods = ['POST', 'GET'])
+@app.route("/file_ju", methods = ['POST'])
 def get_ju_file():
     #return render_template("upload.html")
     try:
@@ -123,14 +123,14 @@ def nbgrader_ex():
     except:
         print("Something went wrong")
 
-@app.route("/logout", methods = ['POST', 'GET'])
+@app.route("/logout", methods = ['POST'])
 def logout():
     session.pop("uname", None)
     session.pop("batch", None)
     session.pop("email", None)
     return render_template("login.html")
     
-@app.route("/log", methods = ['POST', 'GET'])
+@app.route("/log", methods = ['POST'])
 def login():
     
     try:
@@ -163,14 +163,14 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/sign", methods = ['POST', 'GET'])
+@app.route("/sign", methods = ['POST'])
 def sign_in():
     
     try:
         
         if request.method == "POST":
             user = request.form["uname"].lower()
-            assert request.form["psw"] == request.form["psw2"]
+            request.form["psw"] == request.form["psw2"]
             email = request.form["email"].lower()
             DoB = request.form["age"]
             country = request.form["country"].lower()
