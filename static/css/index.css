@@ -13,10 +13,7 @@ input[type = "file"] {
     display: none;  
 }
 
-label {
-    cursor: pointer;
-    border: 5px solid red;
-  }
+
 
 .select_label{
     cursor: pointer;
