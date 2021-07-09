@@ -79,12 +79,12 @@ def get_ju_file():
         
 @app.route("/nbg", methods = ['POST'])
 def nbgrader_ex():
-    return "a"
     try:
         
             if request.method == "POST":
                 
                 if request.files["uploaded_file"] != None:
+                    return "a"
                     
                     user = session['uname']
                     batch = db.get_batch(user)
