@@ -17,8 +17,9 @@ input[type = "file"] {
 
 .select_label{
     cursor: pointer;
-    border: 5px solid red;
+    border: 5px solid rgb(255, 0, 191);
     border-radius: 5px;
+    background: rgb(255, 0, 191);
 
 }
 
