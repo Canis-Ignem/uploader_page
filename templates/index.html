@@ -10,7 +10,7 @@
     <h1> Welcome {{ name }}</h1>
     <body >
         <div class="uploads">
-            
+
             <div class = "upload_nbg">
                 <h2>Upload for nbgrader </h2>
                 <br>
@@ -68,16 +68,19 @@
         </div>
         <br><br><br>
 
-        <div class="jupyer_link">
-            <a href="/launch_jupyter"> <input type="button" value="Launch Jupyter Notebook" target="_blank" >  </a>
+        <div class="links"> 
+
+            <div class="jupyer_link">
+                <a href="/launch_jupyter"> <input type="button" value="Launch Jupyter Notebook" target="_blank" >  </a>
+                
+                <p> {{warning}} </p>
+            </div>
+
+            <div class="logout">
+                <a href="/logout"> <input type="button" value="Log Out">  </a>
+            </div>
             
-            <p> {{warning}} </p>
         </div>
-
-        <div class="logout">
-            <a href="/logout"> <input type="button" value="Log Out">  </a>
-        </div>
-
 
     </body>
         

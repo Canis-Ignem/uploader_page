@@ -5,7 +5,6 @@ body {
     min-height: 100vh;
     color: white;
 
-    padding:50px;
 }
 
 
@@ -43,14 +42,19 @@ input[type = "file"] {
     
 }
 
+.links{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    
+}
+
 .jupyer_link{
-    position: absolute;
     bottom: 20%;
     left: 30%;
 }
 
 .logout{
-    position: absolute;
     bottom: 20%;
     left: 70%;
 }
