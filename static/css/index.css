@@ -15,8 +15,8 @@ input[type = "file"] {
 
 
 .uploads{
-    position: absolute;
-    align-self: center;
+    display:flex;
+    flex-direction:column;
 }
 
 .upload_nbg{
@@ -41,13 +41,13 @@ input[type = "file"] {
 
 .jupyer_link{
     position: absolute;
-    bottom: 0px;
+    bottom: 20%;
     left: 30%;
 }
 
 .logout{
     position: absolute;
-    bottom: 0px;
+    bottom: 20%;
     left: 70%;
 }
 
