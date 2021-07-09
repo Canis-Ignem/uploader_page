@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 import os
+from flask.helpers import send_file
 from flask.wrappers import Response
 from werkzeug.utils import secure_filename
 from md5 import md5
@@ -29,28 +30,27 @@ def index():
 def get_file():
     #return render_template("upload.html")
     try:
-        if os.path.isdir("/home/{}".format(session['uname'])):
-            if request.method == "POST":
+        
+        if request.method == "POST":
+            
+            user = session['uname']
+            
+            if request.files["uploaded_file"] != None:
                 
-                user = session['uname']
                 
-                if request.files["uploaded_file"] != None:
+                if os.path.isdir("/home/{}".format(user)):
+                    f = request.files["uploaded_file"]
+                    f.save( secure_filename(f.filename))
+                    passwd = ""
+                    with open("pass",'r') as p:
+                        passwd = p.read()
+                    os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
+                    os.popen("sudo -S %s"%("mv \"{}\" /home/{}/uploads".format(secure_filename(f.filename), user)), 'w').write(passwd)
                     
-                    
-                    if os.path.isdir("/home/{}".format(user)):
-                        f = request.files["uploaded_file"]
-                        f.save( secure_filename(f.filename))
-                        passwd = ""
-                        with open("pass",'r') as p:
-                            passwd = p.read()
-                        os.popen("sudo -S %s"%("mkdir /home/{}/uploads".format(user)), 'w').write(passwd)
-                        os.popen("sudo -S %s"%("mv \"{}\" /home/{}/uploads".format(secure_filename(f.filename), user)), 'w').write(passwd)
-                        
-                        return render_template("index.html",  name = user, correct3 = "File uploaded correctly" )
-                else:
-                    return render_template("index.html",  name = user, correct3 = "you have no user inside the server contact admisitration" )
-        else:
-            render_template("index.html",  name = session['uname'], correct3 = "You have no user account in the server contact administration" )
+                    return render_template("index.html",  name = user, correct3 = "File uploaded correctly" )
+            else:
+                return render_template("index.html",  name = user, correct3 = "you have no user inside the server contact admisitration" )
+
     except:
         return render_template("index.html", name = user,  correct3 = "File failed upload")
         
@@ -211,7 +211,23 @@ def launch_jupyter():
                 return redirect("http://88.1.56.23:" + response[i].split(":")[2])
     else:
         return render_template("index.html", name = session['uname'],  correct = "", warning = no_user_warning )
+ 
+ 
+@app.route("/dowload", methods = ['POST'])
+def download_file():
+    user = session['uname']
+    try:
+        pth = request.form["pth"]
+        if os.path.isdir("/home/{}".format(user)):
+            if os.path.exists("/home/{}".format(user)+"/"+pth):
+                return send_file("/home/{}".format(user)+"/"+pth, as_attachment=True)
         
+            else:
+                return render_template("index.html",  name = user, download = "file doesnt exist. Make sure your path is correct: /home/{}/YOUR_PTH".format(user) )
+        else:
+            return render_template("index.html",  name = user, download = "you have no user inside the server contact admisitration" )
+    except:
+        return "Something went wrong"
 if __name__ == "__main__":
     app.run("192.168.1.44")
     #app.run()
