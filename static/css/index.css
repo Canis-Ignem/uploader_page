@@ -28,6 +28,15 @@ input[type = "file"] {
     top: 0px;
 }
 
+.jupyer_link{
+    top: 50%;
+    left: 30%;
+}
+
+.logout{
+    top: 50%;
+    left: 70%;
+}
 
 .select_label{
     cursor: pointer;
