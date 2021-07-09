@@ -42,7 +42,7 @@
 
             </form>
         </div>
-        
+
         <br><br>
 
         <div class="jupyer_link">
@@ -52,22 +52,22 @@
         </div>
 
         <br><br>
-
-        <h2>File upload to you account </h2>
-        <br>
-        <form method="POST" action="/file_up" enctype="multipart/form-data">
-            
-            <label for = "account file" class="select_label" > Select a file: </label>
-            <input id = "account file" name="uploaded_file"  type="file" /> <br>
+        <div class="upload_acc">
+            <h2>File upload to you account </h2>
             <br>
-            {{ correct3 }}
-            <br>
-               
+            <form method="POST" action="/file_up" enctype="multipart/form-data">
+                
+                <label for = "account file" class="select_label" > Select a file: </label>
+                <input id = "account file" name="uploaded_file"  type="file" /> <br>
+                <br>
+                {{ correct3 }}
+                <br>
+                
 
-            <input type="submit" name = "uploader" value="uploader" />
+                <input type="submit" name = "uploader" value="uploader" />
 
-        </form>
-
+            </form>
+        </div>
         <br><br><br>
 
         <a href="/logout"> <input type="button" value="Log Out">  </a>
