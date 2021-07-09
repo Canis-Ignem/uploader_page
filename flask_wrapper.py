@@ -84,7 +84,6 @@ def nbgrader_ex():
             if request.method == "POST":
                 
                 if request.files["uploaded_file"] != None:
-                    return "a"
                     
                     user = session['uname']
                     batch = db.get_batch(user)
