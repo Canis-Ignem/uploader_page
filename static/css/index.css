@@ -17,8 +17,8 @@ input[type = "file"] {
 .uploads{
     display: flex;
     flex-direction: row;
-    text-align: center;
-    left: 50%;
+    left: 50% ;
+    
 }
 
 .upload_nbg{
