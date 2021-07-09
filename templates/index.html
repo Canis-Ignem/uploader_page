@@ -27,20 +27,21 @@
 
         <br><br>
 
-        <h2 class="right">File upload to for jupyter </h2>
-        <br>
-        <form method="POST" action="/file_ju" enctype="multipart/form-data" class="right">
-            
-            <label for = "jupyter file" class="select_label" > Select a file: </label>
-            <input id = "jupyter file" name="uploaded_file"  type="file" /> <br>
+        <div class = "upload_jupyter">
+            <h2 class="right">File upload to for jupyter </h2>
             <br>
-            {{ correct2 }}
-            <br>
+            <form method="POST" action="/file_ju" enctype="multipart/form-data" class="right">
+                
+                <label for = "jupyter file" class="select_label" > Select a file: </label>
+                <input id = "jupyter file" name="uploaded_file"  type="file" /> <br>
+                <br>
+                {{ correct2 }}
+                <br>
 
-            <input type="submit" name = "uploader" value="uploader" />
+                <input type="submit" name = "uploader" value="uploader" />
 
-        </form>
-
+            </form>
+        </div>
         <br><br>
         <div class="jupyer_link">
         <a href="/launch_jupyter"> <input type="button" value="Launch Jupyter Notebook" target="_blank" >  </a>
