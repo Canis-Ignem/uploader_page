@@ -74,7 +74,7 @@ body {
 
 #login input::placeholder {
     font-family: 'Overpass', sans-serif;
-    color: #E4E4E4;
+    color: #01FF84;
 }
 
 #login button {
@@ -89,13 +89,13 @@ body {
     -moz-border-radius: 3px 3px 3px 3px;
     -webkit-border-radius: 3px 3px 3px 3px;
     
-    background-color: #bbe1fa;
+    background-color: #01FF84;
     
     margin-top: 10px;
 }
 
 #login button:hover {
-    background-color: #0f4c75;
+    background-color: #01FF84;
     color:#bbe1fa;
 }
 
