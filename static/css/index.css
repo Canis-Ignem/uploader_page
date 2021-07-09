@@ -20,13 +20,14 @@ input[type = "file"] {
 
 .upload_nbg{
     top: 0px;
-    float: right;
+    float: left;
 }
 
-.upload_jupyter{
+.upload_acc{
+    left: 50%;
     top: 0px;
-    float: right;
 }
+
 
 .select_label{
     cursor: pointer;
