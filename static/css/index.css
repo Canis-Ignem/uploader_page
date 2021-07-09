@@ -16,28 +16,33 @@ input[type = "file"] {
 
 
 .upload_nbg{
+    position: absolute;
     left: 20%;
     top: 20%;
     
 }
 
 .upload_acc{
+    position: absolute;
     left: 50%;
     top:  20%;
 }
 
 .upload_jupyter{
+    position: absolute;
     left: 80%;
     top: 20%;;
     
 }
 
 .jupyer_link{
+    position: absolute;
     bottom: 0px;
     left: 30%;
 }
 
 .logout{
+    position: absolute;
     top: 0px;
     left: 70%;
 }

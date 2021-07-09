@@ -9,59 +9,62 @@
     </head>
     <h1> Welcome {{ name }}</h1>
     <body >
-        <div class = "upload_nbg">
-            <h2>Upload for nbgrader </h2>
-            <br>
-            <form method="POST" action="/nbg" enctype="multipart/form-data">
-                
-                <label for = "nbg file" class="select_label" > Select a file: </label>
-                <input id = "nbg file" name="uploaded_file"  type="file" /> <br>
+        <div class="uploads">
+            
+            <div class = "upload_nbg">
+                <h2>Upload for nbgrader </h2>
                 <br>
-                {{ correct }}
+                <form method="POST" action="/nbg" enctype="multipart/form-data">
+                    
+                    <label for = "nbg file" class="select_label" > Select a file: </label>
+                    <input id = "nbg file" name="uploaded_file"  type="file" /> <br>
+                    <br>
+                    {{ correct }}
+                    <br>
+                    
+
+                    <input type="submit" name = "uploader" value="uploader" />
+
+                </form>
+            </div>
+            <br><br>
+
+            <div class = "upload_jupyter">
+                <h2 class="right">File upload to for jupyter </h2>
                 <br>
-                
+                <form method="POST" action="/file_ju" enctype="multipart/form-data" class="right">
+                    
+                    <label for = "jupyter file" class="select_label" > Select a file: </label>
+                    <input id = "jupyter file" name="uploaded_file"  type="file" /> <br>
+                    <br>
+                    {{ correct2 }}
+                    <br>
 
-                <input type="submit" name = "uploader" value="uploader" />
+                    <input type="submit" name = "uploader" value="uploader" />
 
-            </form>
-        </div>
-        <br><br>
+                </form>
+            </div>
 
-        <div class = "upload_jupyter">
-            <h2 class="right">File upload to for jupyter </h2>
-            <br>
-            <form method="POST" action="/file_ju" enctype="multipart/form-data" class="right">
-                
-                <label for = "jupyter file" class="select_label" > Select a file: </label>
-                <input id = "jupyter file" name="uploaded_file"  type="file" /> <br>
+            <br><br>
+
+
+            <br><br>
+            <div class="upload_acc">
+                <h2>File upload to you account </h2>
                 <br>
-                {{ correct2 }}
-                <br>
+                <form method="POST" action="/file_up" enctype="multipart/form-data">
+                    
+                    <label for = "account file" class="select_label" > Select a file: </label>
+                    <input id = "account file" name="uploaded_file"  type="file" /> <br>
+                    <br>
+                    {{ correct3 }}
+                    <br>
+                    
 
-                <input type="submit" name = "uploader" value="uploader" />
+                    <input type="submit" name = "uploader" value="uploader" />
 
-            </form>
-        </div>
-
-        <br><br>
-
-
-        <br><br>
-        <div class="upload_acc">
-            <h2>File upload to you account </h2>
-            <br>
-            <form method="POST" action="/file_up" enctype="multipart/form-data">
-                
-                <label for = "account file" class="select_label" > Select a file: </label>
-                <input id = "account file" name="uploaded_file"  type="file" /> <br>
-                <br>
-                {{ correct3 }}
-                <br>
-                
-
-                <input type="submit" name = "uploader" value="uploader" />
-
-            </form>
+                </form>
+            </div>
         </div>
         <br><br><br>
 
