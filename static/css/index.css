@@ -26,8 +26,6 @@ input[type = "file"] {
     
     padding: 50px;
     margin: 50px;
-    left: 20%;
-    top: 20%;
     display: inline-block;
     
 }
@@ -36,16 +34,12 @@ input[type = "file"] {
     
     padding: 50px;
     margin: 50px;
-    left: 50%;
-    top:  20%;
     display: inline-block;
 }
 
 .upload_jupyter{
     padding: 50px;
     margin: 50px;
-    left: 80%;
-    top: 20%;
     display: inline-block;
     
 }
