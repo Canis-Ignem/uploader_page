@@ -15,11 +15,6 @@ input[type = "file"] {
 
 
 .uploads{
-    display: flex;
-    flex-direction: row;
-    margin: 20px;
-    margin-right: 20px;
-    align-items: center;
     text-align: center;
 }
 
