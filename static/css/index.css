@@ -75,7 +75,7 @@ div{
 
 
 .select_label{
-    background-color: rgb(255, 0, 157);
+    border: 2px orchid;
     color: #01FF84;
     padding:5px 10px;
     border-radius:2px;
