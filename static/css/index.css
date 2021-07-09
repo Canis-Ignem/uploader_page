@@ -20,20 +20,20 @@ input[type = "file"] {
 }
 
 .upload_nbg{
-    position: absolute;
+    
     left: 20%;
     top: 20%;
     
 }
 
 .upload_acc{
-    position: absolute;
+    
     left: 50%;
     top:  20%;
 }
 
 .upload_jupyter{
-    position: absolute;
+    
     left: 80%;
     top: 20%;;
     
