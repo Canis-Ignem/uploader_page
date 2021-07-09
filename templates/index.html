@@ -7,12 +7,11 @@
         <title>File Share</title>
         <link rel="stylesheet" href="/static/css/index.css" />
 
-        <!-- background-image: url('/static/img/amadeo.jpg'); -->
-        <style>
+        <!-- <style>
             body {
                 background-image: url('/static/img/darkgreenbg.png'); 
             }
-        </style>
+        </style>-->
     </head>
     <h1> Welcome {{ name }}</h1>
     <body >
@@ -35,16 +34,15 @@
 
         <h2>File upload to for jupyter </h2>
         <br>
-        <form method="POST" action="/file_ju" enctype="multipart/form-data">
-            
-            Select a file: <input type="file" name = "uploaded_file" /> <br>
-            <br>
-            {{ correct2 }}
-            <br>
-
-            <input type="submit" name = "uploader" value="uploader" />
-
-        </form>
+        <div id="mydiv" >
+            <form method="POST" action="/nbg" enctype="multipart/form-data">
+                      
+                      Select a file: <input type="file" name = "uploaded_file" class="hide_file" /> <br>
+                         
+                      <input type="submit" name = "uploader" value="uploader" />
+          
+                  </form>
+        </div>
 
         <br><br>
 
