@@ -21,7 +21,9 @@
         <div id="mydiv" ></div>
             <form method="POST" action="/nbg" enctype="multipart/form-data">
                 
-                Select a file: <input type="file" name = "uploaded_file" /> <br>
+                <input type="file" name = "uploaded_file" class="hide_file" /> <br>
+                <span class="label select">Select a file:</span>    
+                <input type="submit" name = "uploader" value="uploader" />
                 <br>
                 {{ correct }}
                 <br>
@@ -43,7 +45,7 @@
                 <input type="file" name = "uploaded_file" class="hide_file" /> <br>
                 <span class="label select">Select a file:</span>    
                 <input type="submit" name = "uploader" value="uploader" />
-          
+                <br>
             </form>
         </div>
 
@@ -61,7 +63,9 @@
         <div id="mydiv" >
             <form method="POST" action="/file_up" enctype="multipart/form-data">
                 
-                Select a file: <input type="file" name = "uploaded_file" /> <br>
+                <input type="file" name = "uploaded_file" class="hide_file" /> <br>
+                <span class="label select">Select a file:</span>    
+                <input type="submit" name = "uploader" value="uploader" />
                 <br>
                 {{ correct3 }}
                 <br>
