@@ -13,7 +13,9 @@ input[type = "file"] {
     display: none;  
 }
 
-
+.right{
+    float: right;
+}
 
 .select_label{
     cursor: pointer;
