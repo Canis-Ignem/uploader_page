@@ -79,6 +79,7 @@ def get_ju_file():
         
 @app.route("/nbg", methods = ['POST'])
 def nbgrader_ex():
+    return "a"
     try:
         
             if request.method == "POST":
