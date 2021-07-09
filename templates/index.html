@@ -15,7 +15,7 @@
         <form method="POST" action="/nbg" enctype="multipart/form-data">
             
             <label for = "nbg file" class="select_label" > Select a file: </label>
-            <input id = "nbg file"  type="file" /> <br>
+            <input id = "nbg file" name="uploaded_file"  type="file" /> <br>
             <br>
             {{ correct }}
             <br>
@@ -32,7 +32,7 @@
         <form method="POST" action="/file_ju" enctype="multipart/form-data">
             
             <label for = "jupyter file" class="select_label" > Select a file: </label>
-            <input id = "jupyter file"  type="file" /> <br>
+            <input id = "jupyter file" name="uploaded_file"  type="file" /> <br>
             <br>
             {{ correct2 }}
             <br>
@@ -55,7 +55,7 @@
         <form method="POST" action="/file_up" enctype="multipart/form-data">
             
             <label for = "account file" class="select_label" > Select a file: </label>
-            <input id = "account file"  type="file" /> <br>
+            <input id = "account file" name="uploaded_file"  type="file" /> <br>
             <br>
             {{ correct3 }}
             <br>
