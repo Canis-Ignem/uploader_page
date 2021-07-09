@@ -18,17 +18,19 @@
         
         <h2>Upload for nbgrader </h2>
         <br>
-        <form method="POST" action="/nbg" enctype="multipart/form-data">
-            
-            Select a file: <input type="file" name = "uploaded_file" /> <br>
-            <br>
-            {{ correct }}
-            <br>
-               
+        <div id="mydiv" ></div>
+            <form method="POST" action="/nbg" enctype="multipart/form-data">
+                
+                Select a file: <input type="file" name = "uploaded_file" /> <br>
+                <br>
+                {{ correct }}
+                <br>
+                
 
-            <input type="submit" name = "uploader" value="uploader" />
+                <input type="submit" name = "uploader" value="uploader" />
 
-        </form>
+            </form>
+        </div>
 
         <br><br>
 
@@ -37,11 +39,12 @@
         <div id="mydiv" >
             <form method="POST" action="/nbg" enctype="multipart/form-data">
                       
-                      Select a file: <input type="file" name = "uploaded_file" class="hide_file" /> <br>
-                         
-                      <input type="submit" name = "uploader" value="uploader" />
+                
+                <input type="file" name = "uploaded_file" class="hide_file" /> <br>
+                <label for="uploaded_file">Select a file:</label>    
+                <input type="submit" name = "uploader" value="uploader" />
           
-                  </form>
+            </form>
         </div>
 
         <br><br>
@@ -55,18 +58,19 @@
 
         <h2>File upload to you account </h2>
         <br>
-        <form method="POST" action="/file_up" enctype="multipart/form-data">
-            
-            Select a file: <input type="file" name = "uploaded_file" /> <br>
-            <br>
-            {{ correct3 }}
-            <br>
-               
+        <div id="mydiv" >
+            <form method="POST" action="/file_up" enctype="multipart/form-data">
+                
+                Select a file: <input type="file" name = "uploaded_file" /> <br>
+                <br>
+                {{ correct3 }}
+                <br>
+                
 
-            <input type="submit" name = "uploader" value="uploader" />
+                <input type="submit" name = "uploader" value="uploader" />
 
-        </form>
-
+            </form>
+        </div>
         <br><br><br>
 
         <a href="/logout"> <input type="button" value="Log Out">  </a>
