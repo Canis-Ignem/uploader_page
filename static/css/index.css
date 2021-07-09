@@ -8,6 +8,22 @@ body {
     padding:50px;
 }
 
+
+input[type = "file"] {
+    display: none;  
+}
+
+
+.select_label{
+  border: 2px orchid;
+  color: #01FF84;
+  padding:5px 10px;
+  border-radius:2px;
+  text-align:center;
+  float:left;
+  cursor:pointer
+}
+
 button, input[type="button"], input[type="submit"] {
     background: linear-gradient(180deg, #01FF84 0%, #00D76F 100%);
     border-radius: 6px;
@@ -69,17 +85,3 @@ div{
     cursor:pointer
   }
 
-  input[type = "file"] {
-      display: none;  
-  }
-
-
-.select_label{
-    border: 2px orchid;
-    color: #01FF84;
-    padding:5px 10px;
-    border-radius:2px;
-    text-align:center;
-    float:left;
-    cursor:pointer
-}
