@@ -2,13 +2,13 @@ body {
     font-family: 'Overpass', sans-serif;
     font-weight: normal;
     font-size: 100%;
-    color: #1b262c;
+    color: #01FF84;
     background-image: url("/static/img/darkgreenbg.png");
     background-repeat: no-repeat;
     background-size:cover;;
     
     margin: 0;
-    background-color: #000000;
+    background-color: #002914;
 }
 
 #contenedor {
