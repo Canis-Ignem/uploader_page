@@ -5,49 +5,39 @@
     <head>
         <meta charset="utf-8">
         <title>File Share</title>
-        <link rel="stylesheet" href="/static/css/index.css" />
-
-        <!-- <style>
-            body {
-                background-image: url('/static/img/darkgreenbg.png'); 
-            }
-        </style>-->
+        <link rel="stylesheet" href="index.css" />
     </head>
     <h1> Welcome {{ name }}</h1>
     <body >
         
         <h2>Upload for nbgrader </h2>
         <br>
-        <div id="mydiv" ></div>
-            <form method="POST" action="/nbg" enctype="multipart/form-data">
-                
-                <input type="file" name = "uploaded_file" class="hide_file" /> <br>
-                <span class="label select">Select a file:</span>    
-                <input type="submit" name = "uploader" value="uploader" />
-                <br>
-                {{ correct }}
-                <br>
-                
+        <form method="POST" action="/nbg" enctype="multipart/form-data">
+            
+            Select a file: <input type="file" name = "uploaded_file" /> <br>
+            <br>
+            {{ correct }}
+            <br>
+               
 
-                <input type="submit" name = "uploader" value="uploader" />
+            <input type="submit" name = "uploader" value="uploader" />
 
-            </form>
-        </div>
+        </form>
 
         <br><br>
 
         <h2>File upload to for jupyter </h2>
         <br>
-        <div id="mydiv" >
-            <form method="POST" action="/nbg" enctype="multipart/form-data">
-                      
-                
-                <input type="file" name = "uploaded_file" class="hide_file" /> <br>
-                <span class="label select">Select a file:</span>    
-                <input type="submit" name = "uploader" value="uploader" />
-                <br>
-            </form>
-        </div>
+        <form method="POST" action="/file_ju" enctype="multipart/form-data">
+            
+            Select a file: <input type="file" name = "uploaded_file" /> <br>
+            <br>
+            {{ correct2 }}
+            <br>
+
+            <input type="submit" name = "uploader" value="uploader" />
+
+        </form>
 
         <br><br>
 
@@ -60,21 +50,18 @@
 
         <h2>File upload to you account </h2>
         <br>
-        <div id="mydiv" >
-            <form method="POST" action="/file_up" enctype="multipart/form-data">
-                
-                <input type="file" name = "uploaded_file" class="hide_file" /> <br>
-                <a >Select a file <input type="button" value="Launch Jupyter Notebook" target="_blank">  </a>   
-                <input type="submit" name = "uploader" value="uploader" />
-                <br>
-                {{ correct3 }}
-                <br>
-                
+        <form method="POST" action="/file_up" enctype="multipart/form-data">
+            
+            Select a file: <input type="file" name = "uploaded_file" /> <br>
+            <br>
+            {{ correct3 }}
+            <br>
+               
 
-                <input type="submit" name = "uploader" value="uploader" />
+            <input type="submit" name = "uploader" value="uploader" />
 
-            </form>
-        </div>
+        </form>
+
         <br><br><br>
 
         <a href="/logout"> <input type="button" value="Log Out">  </a>
