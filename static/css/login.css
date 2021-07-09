@@ -4,6 +4,8 @@ body {
     font-size: 100%;
     color: #1b262c;
     background-image: url("/static/img/darkgreenbg.png");
+    background-repeat: no-repeat;
+    background-size:cover;;
     
     margin: 0;
     background-color: #000000;
@@ -53,7 +55,7 @@ body {
 #login input {
     font-family: 'Overpass', sans-serif;
     font-size: 110%;
-    color: #1b262c;
+    color: #01FF84;
     
     display: block;
     width: 100%;
