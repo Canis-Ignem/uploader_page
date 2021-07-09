@@ -13,28 +13,32 @@ input[type = "file"] {
     display: none;  
 }
 
-.upload_jupyter{
-    top: 0px;
-    float: right;
-}
+
 
 .upload_nbg{
-    top: 0px;
-    float: left;
+    left: 20%;
+    top: 20%;
+    
 }
 
 .upload_acc{
     left: 50%;
-    top: 0px;
+    top:  20%;
+}
+
+.upload_jupyter{
+    left: 80%;
+    top: 20%;;
+    
 }
 
 .jupyer_link{
-    top: 80%;
+    bottom: 0px;
     left: 30%;
 }
 
 .logout{
-    top: 80%;
+    top: 0px;
     left: 70%;
 }
 
