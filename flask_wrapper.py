@@ -8,7 +8,6 @@ from subprocess import Popen, list2cmdline
 import re
 import pandas as pd
 import time
-import webbrowser
 
 
 
@@ -209,7 +208,6 @@ def launch_jupyter():
         for i in range(1, len(response)):
             
             if re.findall('[a-z]+',str(response[i].split("/")[-1]))[0] == re.findall('[a-z]+',str(session['uname']))[0]:
-                return webbrowser.open_new_tab("http://88.1.56.23:" + response[i].split(":")[2])
                 return redirect("http://88.1.56.23:" + response[i].split(":")[2])
     else:
         return render_template("index.html", name = session['uname'],  correct = "", warning = no_user_warning )
