@@ -14,9 +14,10 @@ input[type = "file"] {
 
 
 .uploads{
+    position: absolute;
+    left: 50%;
     display: flex;
     flex-direction: row;
-    text-align: center;
     
 }
 
