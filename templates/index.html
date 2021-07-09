@@ -9,22 +9,22 @@
     </head>
     <h1> Welcome {{ name }}</h1>
     <body >
-        
-        <h2>Upload for nbgrader </h2>
-        <br>
-        <form method="POST" action="/nbg" enctype="multipart/form-data">
-            
-            <label for = "nbg file" class="select_label" > Select a file: </label>
-            <input id = "nbg file" name="uploaded_file"  type="file" /> <br>
+        <div class = "upload_nbg">
+            <h2>Upload for nbgrader </h2>
             <br>
-            {{ correct }}
-            <br>
-               
+            <form method="POST" action="/nbg" enctype="multipart/form-data">
+                
+                <label for = "nbg file" class="select_label" > Select a file: </label>
+                <input id = "nbg file" name="uploaded_file"  type="file" /> <br>
+                <br>
+                {{ correct }}
+                <br>
+                
 
-            <input type="submit" name = "uploader" value="uploader" />
+                <input type="submit" name = "uploader" value="uploader" />
 
-        </form>
-
+            </form>
+        </div>
         <br><br>
 
         <div class = "upload_jupyter">
@@ -42,7 +42,9 @@
 
             </form>
         </div>
+        
         <br><br>
+
         <div class="jupyer_link">
         <a href="/launch_jupyter"> <input type="button" value="Launch Jupyter Notebook" target="_blank" >  </a>
         
