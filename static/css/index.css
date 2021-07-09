@@ -14,7 +14,11 @@ input[type = "file"] {
 }
 
 .right{
-    float: right;
+    float: inline-end;
+}
+
+.center{
+    float: center ;
 }
 
 .select_label{
