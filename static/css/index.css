@@ -1,0 +1,62 @@
+body {
+    background-image: url("darkgreenbg.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    min-height: 100vh;
+    color: white;
+
+    padding:50px;
+}
+
+button, input[type="button"], input[type="submit"] {
+    background: linear-gradient(180deg, #01FF84 0%, #00D76F 100%);
+    border-radius: 6px;
+    padding-top:10px;
+    padding-bottom:10px;
+    font-weight: 800;
+    font-size: 23px;
+    line-height: 28px;
+    border:0px;
+    margin-top:10px;
+    margin-bottom:10px;
+    min-width: 240px;
+}
+
+input[type="text"], input[type="email"],input[type="password"]  {
+    padding: 10px;
+    border: 3px solid white;
+    margin-left:20px;
+    margin-bottom: 20px;
+}
+a {
+    color: #01FF84;
+}
+
+#login {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.log_form {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.log_form label {
+    width: 40%;
+}
+.log_form label b {
+    line-height: 40px;
+}
+
+.log_form input, .log_form select {
+    width: 40%;
+    margin-left:0px;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size:30px;
+    font-weight: 800px;
+}
