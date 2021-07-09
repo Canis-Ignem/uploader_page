@@ -18,6 +18,7 @@ input[type = "file"] {
     display: flex;
     flex-direction: row;
     text-align: center;
+    left: 50%;
 }
 
 .upload_nbg{
