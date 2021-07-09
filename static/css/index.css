@@ -24,13 +24,13 @@ input[type = "file"] {
 
 .select_label{
     cursor: pointer;
-    border: 5px solid rgb(255, 0, 191);
+    border: 5px solid rgb(0, 0, 0);
     border-radius: 5px;
-    background: rgb(255, 0, 191);
-    color: palegreen;
+    background: rgb(0, 0, 0);
+    color: #01FF84
 }
 
-button,  input[type="submit"] {
+button, input[type="button"], input[type="submit"] {
     background: linear-gradient(180deg, #01FF84 0%, #00D76F 100%);
     border-radius: 6px;
     padding-top:10px;
@@ -42,24 +42,9 @@ button,  input[type="submit"] {
     margin-top:10px;
     margin-bottom:10px;
     min-width: 240px;
-
 }
 
-button, input[type="button"] {
-    background: linear-gradient(180deg, #01FF84 0%, #00D76F 100%);
-    border-radius: 6px;
-    padding-top:10px;
-    padding-bottom:10px;
-    font-weight: 800;
-    font-size: 23px;
-    line-height: 28px;
-    border:0px;
-    margin-top:10px;
-    margin-bottom:10px;
-    min-width: 240px;
-    justify-content: center;
-    align-items: center;
-}
+
 
 input[type="text"], input[type="email"],input[type="password"]  {
     padding: 10px;
