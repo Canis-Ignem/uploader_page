@@ -13,6 +13,9 @@ input[type = "file"] {
     display: none;  
 }
 
+label {
+    border: 1px solid #ccc;
+  }
 
 .select_label{
   border: 2px orchid;
