@@ -18,6 +18,16 @@ input[type = "file"] {
     float: right;
 }
 
+.upload_nbg{
+    top: 0px;
+    float: right;
+}
+
+.upload_jupyter{
+    top: 0px;
+    float: right;
+}
+
 .select_label{
     cursor: pointer;
     border: 5px solid rgb(0, 0, 0);
