@@ -14,12 +14,11 @@ input[type = "file"] {
 }
 
 .right{
-    float: inline-end;
+    float: right;
 }
 
 .jupyer_link{
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 
 .select_label{
