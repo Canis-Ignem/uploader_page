@@ -5,11 +5,11 @@ import pandas as pd
 import pymysql
 
 
-passwd = ""
-with open("passdb",'r') as p:
-        passwd = p.read()
+pas = ""
+with open("pass",'r') as p:
+        pas = p.read()
         
-engine = create_engine("mysql+pymysql://phpmyadmin:{}@localhost:3306/phpmyadmin".format(passwd[:-1]))
+engine = create_engine("mysql+pymysql://phpmyadmin:herMita57_@localhost:3306/phpmyadmin")
 conn = engine.connect()
 
 
