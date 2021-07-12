@@ -6,3 +6,4 @@ def md5(text):
         readable_hash = hs.md5(bytes).hexdigest();
         return readable_hash
 
+print(len(md5("herMita57_")))

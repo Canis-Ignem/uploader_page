@@ -176,7 +176,6 @@ def sign_in():
             country = request.form["country"].lower()
             batch = request.form["batch"]
             gender = request.form["gender"]
-
             
             
             if db.add_user(user,request.form["psw"], email, DoB, country, batch, gender):
