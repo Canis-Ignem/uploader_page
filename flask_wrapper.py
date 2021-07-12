@@ -212,7 +212,7 @@ def launch_jupyter():
     else:
         return render_template("index.html", name = session['uname'],  correct = "", warning = no_user_warning )
  
- 
+'''
 @app.route("/dowload", methods = ['POST'])
 def download_file():
     user = session['uname']
@@ -228,6 +228,7 @@ def download_file():
             return render_template("index.html",  name = user, download = "you have no user inside the server contact admisitration" )
     except:
         return "Something went wrong"
+'''
 if __name__ == "__main__":
     app.run("192.168.1.44")
     #app.run()
