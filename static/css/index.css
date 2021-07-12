@@ -29,6 +29,11 @@ input[type = "file"] {
     
 }
 
+.title_page{
+    padding: 50px;
+    color: #01FF84
+}
+
 .upload_acc{
     
     padding: 50px;
