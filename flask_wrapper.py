@@ -9,6 +9,7 @@ from subprocess import Popen, list2cmdline
 import re
 import pandas as pd
 import time
+import random_forest
 
 
 
@@ -211,25 +212,33 @@ def launch_jupyter():
     else:
         return render_template("index.html", name = session['uname'],  correct = "", warning = no_user_warning )
  
-'''
+
 @app.route("/dowload", methods = ['POST'])
 def download_file():
     user = session['uname']
+    
+    
+    '''
     try:
+        
         pth = request.form["pth"]
         if os.path.isdir("/home/{}".format(user)):
             if os.path.exists("/home/{}".format(user)+"/"+pth):
                 return send_file("/home/{}".format(user)+"/"+pth, as_attachment=True)
         
             else:
+        
                 return render_template("index.html",  name = user, download = "file doesnt exist. Make sure your path is correct: /home/{}/YOUR_PTH".format(user) )
         else:
             return render_template("index.html",  name = user, download = "you have no user inside the server contact admisitration" )
     except:
         return "Something went wrong"
-'''
+    '''
+
 if __name__ == "__main__":
     app.run("192.168.1.44")
     #app.run()
+
+
 
 
