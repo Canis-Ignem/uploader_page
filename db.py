@@ -22,7 +22,7 @@ def add_user(user, pas, email, DoB, country_of_residence, batch, gender ):
     try:
         
         md5_sum = md5(pas)
-        conn.execute("INSERT INTO users (user, email, batch, md5,country_of_residence gender, DoB) VALUES('{}','{}','{}','{}','{}','{}','{}')".format(user, email, batch, md5_sum, DoB, country_of_residence, gender))
+        conn.execute("INSERT INTO users (user, email, batch, md5,country_of_residence, gender, DoB) VALUES('{}','{}','{}','{}','{}','{}','{}')".format(user, email, batch, md5_sum, country_of_residence, gender, DoB))
         return True
     except:
         return False
